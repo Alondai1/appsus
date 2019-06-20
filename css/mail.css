@@ -6,6 +6,17 @@
     padding-top: 10px;
 }
 
+.mail-container ul {
+    list-style: none;
+}
+
+.fav {
+    color: #D35E3D;
+}
+
+.mail-list ul li {
+    cursor: pointer;
+}
 /* -----------MAIL BAR------------------------------------------------- */
 
 .mail-bar {

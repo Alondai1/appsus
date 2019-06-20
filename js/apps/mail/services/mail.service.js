@@ -76,8 +76,18 @@ function deleteMail(id) {
     return Promise.resolve()
 }
 
+function toggleFav(id) {
+    const mail = mailsDB.find(mail => mail.id === id);
+    mail.isFav= !mail.isFav;
+    utilService.store(MAILS_KEY, mailsDB)
+    return Promise.resolve()
+}
+
+
+
 
 export default {
     query,
-    deleteMail
+    deleteMail,
+    toggleFav
 }
