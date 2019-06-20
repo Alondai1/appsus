@@ -2,6 +2,11 @@
     flex-grow: 1;
 }
 
+.mail-bar {
+    width: 150px;
+    margin-left: 20px;
+}
+
 .mail-bar ul {
     list-style-type: none;
     padding-inline-start: 0;
@@ -9,12 +14,31 @@
 
 .mail-bar ul li {
     cursor: pointer;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding: 8px 0 8px 15px;
 }
 
 .mail-bar ul li:hover {
     background-color: #E19F20;
     border-radius: 0 20px 20px 0;
     color: #fff;
+}
+
+.mail-compose {
+    cursor: pointer;
+    border-radius: 30px;
+    background-color: #fff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 20px;
+    border: 1px solid #666;
+    box-shadow: 0 0 2px 0 rgba(102, 102, 102, 1);
+}
+
+.ui-progress-linear--type-determinate {
+    height: 25px;
+}
+
+.ui-progress-linear--color-primary .ui-progress-linear__progress-bar {
+    height: 25px;
 }
