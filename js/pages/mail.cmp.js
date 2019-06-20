@@ -11,7 +11,8 @@ export default {
     <section class="mail-container">
         <header class="mail-header"> 
             <menu-header></menu-header>
-            <img src="../../../img/gmail-icon.png"/>
+            <img src="../../img/gmail-icon.png"/>
+            <!-- <img src="../../img/gmail-icon.png"/> -->
             
             <ui-textbox
                 color="green"
@@ -41,7 +42,7 @@ export default {
         },
 
         deleteForm() {
-            this.showComposeForm= false
+            this.showComposeForm = false
         }
     },
 
