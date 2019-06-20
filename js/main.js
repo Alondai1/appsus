@@ -8,9 +8,9 @@ const appRouter = new VueRouter({
 let app = new Vue({
     el: '#app',
     template: `
-    <section>
+    <section class="body">
         <router-view></router-view>
-        <footer class="footer">copyrights © 2019</footer>
+        <footer>copyrights © 2019</footer>
     </section>
     `,
     router: appRouter,
