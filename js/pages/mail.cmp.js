@@ -12,22 +12,22 @@ export default {
         <h1>Mail Page</h1>
         <section class="maill-app-container flex">
             <mail-bar @setFolder="showFolder"></mail-bar>
-            <list-mail :mails="mailsDB"> </list-mail>
+            <list-mail :mails="mailsToShow" :folder="folder"> </list-mail>
         </section>
     </section>
     `,
 
     methods: {
         showFolder(data) {
+            console.log(data);
             this.folder = data
-            console.log(this.folder);
         },
     },
 
         created() {
         mailService.query()
             .then(dataBase => {
-                this.mailsDB = dataBase
+                this.mailsDB = dataBase;
             })
     },
 
@@ -35,7 +35,22 @@ export default {
         return {
             mailsDB: [],
             filterBy: '',
-            folder: ''
+            folder: '',
+        }
+    },
+
+    computed: {
+        mailsToShow() {
+            if(this.folder==='starred') {
+               return this.mailsDB.filter(mail => (mail.isFav)&&(!mail.isDeleted))
+            }
+            else if (this.folder==='trash'){
+               return this.mailsDB.filter(mail => (mail.isDeleted))
+            }
+            else if (this.folder==='inbox'){
+               return this.mailsDB.filter(mail => (!mail.isDeleted))
+            }
+            else return this.mailsDB;
         }
     },
 

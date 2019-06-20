@@ -10,7 +10,8 @@ template: `
          <span class="mail-list-from">{{mail.sentFrom}}</span>
          <span :class="isRead">{{mail.subject}}</span>
          <span :class="isRead">{{shortedBody(mail.body)}}</span>
-         <button @click.stop="deleteMail(mail.id)"> delele </button>
+         <span @click.stop="deleteMail(mail.id)" class="mail-trash"> <i class="far fa-trash-alt"></i> </span>
+        
     </li>
 </ul>
 
@@ -30,7 +31,7 @@ data() {
 },
 
 props: 
-    ['mails'],
+    ['mails', 'folder'],
 
 methods: {
     shortedBody(txt) {
@@ -45,7 +46,7 @@ methods: {
 
 computed: {
     isRead() {
-        
+
     }
 },
 

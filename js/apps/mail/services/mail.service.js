@@ -26,7 +26,7 @@ function query() {
               "sendAt": "2016-01-27T07:43:31 -02:00",
               "isDeleted": false,
               "toDelete": true,
-              "isFav": true,
+              "isFav": false,
               "sentFrom": "Wiggins Shannon"
             },
             {
@@ -59,7 +59,7 @@ function query() {
               "sendAt": "2018-10-22T01:36:59 -03:00",
               "isDeleted": false,
               "toDelete": true,
-              "isFav": true,
+              "isFav": false,
               "sentFrom": "Contreras Baird"
             }
           ];
