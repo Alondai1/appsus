@@ -60,19 +60,53 @@
 }
 
 .mail-form {
+
     background-color: #fff;
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    padding-bottom: 10px;
+    box-shadow: 0 0 2px 0 rgba(102, 102, 102, 1);
+    width: 60vw;
+    height: 60vh;
+
 }
 
 .mail-form form {
+    height: 100%;
     padding-left: 10px;
     padding-right: 10px;
+    flex-direction: column;
+    align-content: space-between;
 }
 
 .mail-form-title {
+    flex-direction: row;
+    justify-content: space-between;
     background-color: #666;
     color: #fff;
     padding: 10px;
 }
+
+.mail-btns {
+    justify-content: space-between;
+}
+
+
+.mail-btns button:nth-last-child(1) {
+    background-color: #fff;
+    width: 40px;
+    font-size: 25px;
+    color: #666;
+    border-color: #fff;
+    padding-bottom: 0;
+    cursor: pointer;
+}
+
+.close-form {
+    cursor: pointer;
+}
+
 
 /* ----------------------------Mail Header-------------------------------------------------- */
 
