@@ -12,6 +12,7 @@ export default {
         <header class="mail-header"> 
             <menu-header></menu-header>
             <img src="../../../img/gmail-icon.png"/>
+            
             <ui-textbox
                 color="green"
                 floating-label
@@ -19,6 +20,7 @@ export default {
                 placeholder="Search"
                 v-model="mailSearch">
             </ui-textbox>
+          
         </header>
         <section class="mail-app-container flex">
             <mail-bar @compose="composeMail" @setFolder="showFolder"></mail-bar>
@@ -64,7 +66,9 @@ export default {
                 return this.mailsDB.filter(mail => (mail.isDeleted))
             } else if (this.folder === 'inbox') {
                 return this.mailsDB.filter(mail => (!mail.isDeleted))
-            } else return this.mailsDB;
+            } 
+            else return this.mailsDB.filter(mail => (!mail.isDeleted))    
+            
         }
     },
 

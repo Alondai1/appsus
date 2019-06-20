@@ -7,6 +7,7 @@ template: `
 
 <ul v-if="mails">
     <li v-for="mail, idx in mails"> 
+         <span :class="{fav : mail.isFav}" @click.stop="toggleFav(mail.id)"> <i class="fas fa-star"></i> </span>
          <span class="mail-list-from">{{mail.sentFrom}}</span>
          <span :class="isRead">{{mail.subject}}</span>
          <span :class="isRead">{{shortedBody(mail.body)}}</span>
@@ -41,6 +42,11 @@ methods: {
     deleteMail(id) { 
         mailService.deleteMail(id)
             .then(console.log('deleted on page - show alert'))
+    },
+
+    toggleFav(id) {
+        mailService.toggleFav(id)
+            .then(console.log('added to fav on page - show alert'))
     }
 },
 
