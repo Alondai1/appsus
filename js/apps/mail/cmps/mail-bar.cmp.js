@@ -1,7 +1,7 @@
 export default {
     template: `
     <section class="mail-bar">
-        <div class="mail-compose" @click="selectedFolder('compose')"><i class="fas fa-plus"></i> <span>compose</span></div>
+        <div class="mail-compose" @click="compose"><i class="fas fa-plus"></i> <span>compose</span></div>
         <ul>
             <li @click="selectedFolder('inbox')" :class="{active: inboxIsActive}" :active="activeLink"><i class="fas fa-inbox"></i> Inbox</li>
             <li @click="selectedFolder('starred')" :class="{active: starredIsActive}" :active="activeLink"><i class="fas fa-star"></i> Starred</li>
@@ -16,6 +16,9 @@ export default {
             this.$emit('setFolder', data)
             this.isActive = true;
             this.linkActive = data;
+        },
+        compose() {
+            this.$emit('compose')
         }
     },
     computed: {

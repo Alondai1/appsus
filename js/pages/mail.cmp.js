@@ -21,10 +21,10 @@ export default {
             </ui-textbox>
         </header>
         <section class="mail-app-container flex">
-            <mail-bar @setFolder="showFolder"></mail-bar>
+            <mail-bar @compose="composeMail" @setFolder="showFolder"></mail-bar>
             <list-mail :mails="mailsToShow" :folder="folder"></list-mail>
         </section>
-        <mail-form></mail-form>
+        <mail-form v-if="showComposeForm"></mail-form>
     </section>
     `,
 
@@ -33,6 +33,10 @@ export default {
             //console.log(data);
             this.folder = data
         },
+
+        composeMail() {
+            this.showComposeForm = true;
+        }
     },
 
     created() {
@@ -47,7 +51,8 @@ export default {
             mailsDB: [],
             filterBy: '',
             folder: '',
-            mailSearch:''
+            mailSearch:'',
+            showComposeForm: false
         }
     },
 
