@@ -11,10 +11,10 @@ export default {
         <router-link to="/mail/">Mail Info</router-link>
         <list-mail> </list-mail>
     </section>
-    ` ,
+    `,
 
-components: {
-    'menu-header': menu,
-    'list-mail': mailList
-}
+    components: {
+        'menu-header': menu,
+        'list-mail': mailList
+    }
 }

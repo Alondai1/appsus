@@ -2,6 +2,10 @@
 @import './keep.css';
 @import './home.css';
 
+/* About ---------------------------------------*/
+.about-container {
+    flex-grow: 1;
+}
 
 /* Fonts ---------------------------------------*/
 @font-face {
@@ -43,12 +47,12 @@ body {
 }
 
 .ui-popover a span {
-  text-align: center;
-  color: rgb(0, 0, 0);
+    text-align: center;
+    color: rgb(0, 0, 0);
 }
 
-.ui-popover a:hover{
-  border: 0.5px solid rgb(189, 189, 189);
+.ui-popover a:hover {
+    border: 0.5px solid rgb(189, 189, 189);
     text-align: center;
     color: black;
 }
