@@ -13,7 +13,7 @@ function query() {
               "body": "Sint in voluptate ea ea ad. Velit excepteur et labore ut excepteur ex nisi aliquip ullamco nulla enim. Tempor ad eu sint est sit anim dolore eiusmod sint nostrud laborum. Qui eu commodo ea esse exercitation. Do commodo ea excepteur tempor est mollit enim eu labore.\r\n",
               "isRead": true,
               "sendAt": "2019-05-07T04:19:14 -03:00",
-              "isDeleted": true,
+              "isDeleted": false,
               "toDelete": true,
               "isFav": true,
               "sentFrom": "Tanisha Morrison"
@@ -24,7 +24,7 @@ function query() {
               "body": "Laborum consectetur do incididunt culpa esse elit eiusmod et mollit pariatur minim. Sint nulla magna duis est magna dolor minim eiusmod nulla dolor. Ea ad mollit dolor ut tempor enim aute incididunt laborum.\r\n",
               "isRead": true,
               "sendAt": "2016-01-27T07:43:31 -02:00",
-              "isDeleted": true,
+              "isDeleted": false,
               "toDelete": true,
               "isFav": true,
               "sentFrom": "Wiggins Shannon"
@@ -57,7 +57,7 @@ function query() {
               "body": "Ex nulla nisi Lorem consequat excepteur magna est labore laborum sit cillum amet. Deserunt est cillum aliquip enim ex ex aliquip ullamco Lorem elit cillum ipsum mollit. Irure ad occaecat in tempor.\r\n",
               "isRead": false,
               "sendAt": "2018-10-22T01:36:59 -03:00",
-              "isDeleted": true,
+              "isDeleted": false,
               "toDelete": true,
               "isFav": true,
               "sentFrom": "Contreras Baird"
@@ -69,7 +69,15 @@ function query() {
     return Promise.resolve(mailsDB);
 }
 
+function deleteMail(id) {
+    const mail = mailsDB.find(mail => mail.id === id);
+    mail.isDeleted=true;
+    utilService.store(MAILS_KEY, mailsDB)
+    return Promise.resolve()
+}
+
 
 export default {
-    query
+    query,
+    deleteMail
 }
