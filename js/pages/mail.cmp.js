@@ -53,7 +53,7 @@ export default {
             mailsDB: [],
             filterBy: '',
             folder: '',
-            mailSearch:'',
+            mailSearch: '',
             showComposeForm: false
         }
     },
@@ -66,9 +66,8 @@ export default {
                 return this.mailsDB.filter(mail => (mail.isDeleted))
             } else if (this.folder === 'inbox') {
                 return this.mailsDB.filter(mail => (!mail.isDeleted))
-            } 
-            else return this.mailsDB.filter(mail => (!mail.isDeleted))    
-            
+            } else return this.mailsDB.filter(mail => (!mail.isDeleted))
+
         }
     },
 
