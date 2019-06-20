@@ -26,7 +26,7 @@ export default {
             <mail-bar @compose="composeMail" @setFolder="showFolder"></mail-bar>
             <list-mail :mails="mailsToShow" :folder="folder"></list-mail>
         </section>
-        <mail-form v-if="showComposeForm"></mail-form>
+        <mail-form @deleteForm="deleteForm" v-if="showComposeForm"></mail-form>
     </section>
     `,
 
@@ -38,6 +38,10 @@ export default {
 
         composeMail() {
             this.showComposeForm = true;
+        },
+
+        deleteForm() {
+            this.showComposeForm= false
         }
     },
 
