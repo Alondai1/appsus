@@ -9,9 +9,18 @@ import createMail from '../apps/mail/cmps/create-mail.cmp.js'
 export default {
     template: `
     <section class="mail-container">
-    <menu-header></menu-header>
-        <h1>Mail Page</h1>
-        <section class="maill-app-container flex">
+        <header class="mail-header"> 
+            <menu-header></menu-header>
+            <img src="../../../img/gmail-icon.png"/>
+            <ui-textbox
+                color="green"
+                floating-label
+                label="Search"
+                placeholder="Search"
+                v-model="mailSearch">
+            </ui-textbox>
+        </header>
+        <section class="mail-app-container flex">
             <mail-bar @setFolder="showFolder"></mail-bar>
             <list-mail :mails="mailsToShow" :folder="folder"></list-mail>
         </section>
@@ -38,6 +47,7 @@ export default {
             mailsDB: [],
             filterBy: '',
             folder: '',
+            mailSearch:''
         }
     },
 
