@@ -27,7 +27,7 @@ export default {
             <mail-bar @compose="composeMail" @setFolder="showFolder"></mail-bar>
             <list-mail :mails="mailsToShow" :folder="folder"></list-mail>
         </section>
-        <mail-form @deleteForm="deleteForm" v-if="showComposeForm"></mail-form>
+        <mail-form @deleteForm="deleteForm" v-if="showComposeForm" @emailSent="emailSent"></mail-form>
     </section>
     `,
 
@@ -43,6 +43,9 @@ export default {
 
         deleteForm() {
             this.showComposeForm = false
+        },
+        emailSent() {
+            console.log('email sent');
         }
     },
 

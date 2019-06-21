@@ -17,6 +17,7 @@
 .mail-list ul li {
     cursor: pointer;
 }
+
 /* -----------MAIL BAR------------------------------------------------- */
 
 .mail-bar {
@@ -75,7 +76,7 @@
     background-color: #fff;
     position: absolute;
     bottom: 3px;
-    right: 3px;
+    right: 10px;
     padding-bottom: 10px;
     box-shadow: 0 0 2px 0 rgba(102, 102, 102, 1);
     width: 60vw;
@@ -85,6 +86,7 @@
 
 .mail-form form {
     height: 100%;
+    padding-top: 5px;
     padding-left: 10px;
     padding-right: 10px;
     flex-direction: column;

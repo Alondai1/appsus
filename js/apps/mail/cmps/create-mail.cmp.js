@@ -43,7 +43,7 @@ export default {
         sendMessage() {
             this.email.sendAt = Date.now();
             mailService.sendMail(this.email)
-                .then(console.log('mail sent'))
+                .then(this.$emit('emailSent'))
         }
     },
 }
