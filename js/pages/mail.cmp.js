@@ -31,7 +31,7 @@ export default {
             </div>
         </header>
         <section class="mail-app-container flex">
-            <mail-bar @compose="composeMail" @setFolder="showFolder"></mail-bar>
+            <mail-bar @compose="composeMail" @setFolder="showFolder" :mails="mailsDB"></mail-bar>
             <list-mail :mails="mailsToShow" :folder="folder"></list-mail>
         </section>
         <mail-form @delete-form="deleteForm" v-if="showComposeForm" @email-sent="emailSent"></mail-form>
@@ -54,7 +54,7 @@ export default {
         emailSent() {
             console.log('email sent, show alert');
             this.showComposeForm=false;
-            this.folder='inbox';
+            
         },
         setKindFilter() {
             

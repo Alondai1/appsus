@@ -8,7 +8,7 @@ export default {
             <li @click="selectedFolder('sent')" :class="{active: sentIsActive}" :active="activeLink"><i class="fas fa-share-square"></i> Sent</li>
             <li @click="selectedFolder('trash')" :class="{active: trashIsActive}" :active="activeLink"><i class="fas fa-trash"></i> Trash</li>
         </ul>
-        <ui-progress-linear color="primary" type="determinate" :progress="75"></ui-progress-linear>
+        <ui-progress-linear color="primary" type="determinate" :progress="progress"></ui-progress-linear>
     </section>
     `,
     methods: {
@@ -44,6 +44,17 @@ export default {
                 this.sentIsActive = false;
                 this.trashIsActive = true;
             }
+        },
+
+        progress() {
+            this.mails.forEach(mail => {
+                if(mail.isRead) this.read ++;
+                
+                
+            });
+          
+              
+            return (this.read/this.mails.length)*100
         }
     },
     data() {
@@ -53,6 +64,9 @@ export default {
             sentIsActive: false,
             trashIsActive: false,
             linkActive: '',
+            read:0
         }
     },
+
+    props: ['mails']
 }
