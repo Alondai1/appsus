@@ -38,12 +38,12 @@ export default {
     },
     methods: {
         deleteForm() {
-            this.$emit('deleteForm')
+            this.$emit('delete-form')
         },
         sendMessage() {
             this.email.sendAt = Date.now();
             mailService.sendMail(this.email)
-                .then(this.$emit('emailSent'))
+                .then(this.$emit('email-sent'))
         }
     },
 }
