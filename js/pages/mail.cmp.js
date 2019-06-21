@@ -5,6 +5,7 @@ import mailBar from '../apps/mail/cmps/mail-bar.cmp.js'
 import createMail from '../apps/mail/cmps/create-mail.cmp.js'
 
 
+
 export default {
     template: `
     <section class="mail-container">
@@ -21,12 +22,11 @@ export default {
                 v-model="filterBy.txt">
             </ui-textbox>
 
-            <select @change="setKindFilter" v-model="filterBy.kind" class="mail-select-filter">
+            <select v-model="filterBy.kind" class="mail-select-filter">
                 <option>All</option>
                 <option>Unread</option>
                 <option>Read</option>
             </select>
-
             </div>
         </header>
         <section class="mail-app-container flex">
@@ -57,8 +57,10 @@ export default {
             console.log(this.contentRender);
         },
         setKindFilter() {
+            this.showComposeForm = false;
+            this.fake = !this.fake;
 
-        }
+        },
     },
 
     created() {
