@@ -91,6 +91,13 @@ function sendMail(email) {
   return Promise.resolve()
 }
 
+function restoreMail(id) {
+  const mail = mailsDB.find(mail => mail.id === id);
+  mail.isDeleted = false;
+  utilService.store(MAILS_KEY, mailsDB)
+  return Promise.resolve()
+}
+
 
 
 
@@ -98,5 +105,6 @@ export default {
   query,
   deleteMail,
   toggleFav,
-  sendMail
+  sendMail,
+  restoreMail
 }

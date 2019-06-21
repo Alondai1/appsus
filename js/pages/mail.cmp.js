@@ -6,6 +6,7 @@ import createMail from '../apps/mail/cmps/create-mail.cmp.js'
 
 
 
+
 export default {
     template: `
     <section class="mail-container">

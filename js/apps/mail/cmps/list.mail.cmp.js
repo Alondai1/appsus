@@ -11,7 +11,10 @@ template: `
          <span class="mail-list-from">{{mail.sentFrom}}</span>
          <span :class="isRead">{{mail.subject}}</span>
          <span :class="isRead">{{shortedBody(mail.body)}}</span>
-         <span @click.stop="deleteMail(mail.id)" class="mail-trash" v-if="folder!=='trash'"> <i class="far fa-trash-alt"></i> </span>
+         <span>
+             <span @click.stop="deleteMail(mail.id)" class="mail-trash" v-if="folder!=='trash'"> <i class="far fa-trash-alt"></i> </span>
+        </span>
+         <span @click.stop="restoreMail(mail.id)" class="mail-trash" v-if="folder==='trash'"><i class="fas fa-undo"></i> </span>
         
     </li>
 </ul>
@@ -47,7 +50,14 @@ methods: {
     toggleFav(id) {
         mailService.toggleFav(id)
             .then(console.log('added to fav on page - show alert'))
+    },
+    restoreMail(id) { 
+        console.log(this.folder);
+        
+        mailService.restoreMail(id)
+            .then(console.log('restored on page - show alert'))
     }
+
 },
 
 computed: {
