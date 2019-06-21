@@ -45,7 +45,7 @@ export default {
             this.showComposeForm = false
         },
         emailSent() {
-            console.log('email sent');
+            console.log('email sent, show alert');
         }
     },
 
@@ -76,7 +76,7 @@ export default {
                 return this.mailsDB.filter(mail => (!mail.isDeleted))
             } else return this.mailsDB.filter(mail => (!mail.isDeleted))
 
-        }
+        },
     },
 
     components: {
