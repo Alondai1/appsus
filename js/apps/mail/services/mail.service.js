@@ -86,6 +86,8 @@ function sendMail(email) {
   let mails = utilService.load(MAILS_KEY);
   mails.unshift(email)
   utilService.store(MAILS_KEY, mails)
+  console.log(email);
+  
   return Promise.resolve()
 }
 

@@ -72,7 +72,6 @@
 }
 
 .mail-form {
-
     background-color: #fff;
     position: absolute;
     bottom: 3px;
@@ -81,7 +80,6 @@
     box-shadow: 0 0 2px 0 rgba(102, 102, 102, 1);
     width: 60vw;
     height: 60vh;
-
 }
 
 .mail-form form {
@@ -105,7 +103,6 @@
     justify-content: space-between;
 }
 
-
 .mail-btns button:nth-last-child(1) {
     background-color: #fff;
     width: 40px;
@@ -119,7 +116,6 @@
 .close-form {
     cursor: pointer;
 }
-
 
 /* ----------------------------Mail Header-------------------------------------------------- */
 
@@ -158,4 +154,15 @@
 
 .mail-header .ui-textbox__textarea {
     color: white;
+}
+
+.mail-filter-section {
+    flex-direction: column;
+}
+
+.mail-select-filter {
+    width: 5%;
+    position: absolute;
+    left: 50%;
+    top: 9%;
 }

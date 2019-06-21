@@ -13,15 +13,22 @@ export default {
             <menu-header></menu-header>
             <img src="../../img/gmail-icon.png"/>
             <!-- <img src="../../img/gmail-icon.png"/> -->
-            
+            <div class="mail-filter-section flex">
             <ui-textbox
                 color="green"
                 floating-label
                 label="Search"
                 placeholder="Search"
-                v-model="mailSearch">
+                v-model="filterBy.txt">
             </ui-textbox>
-          
+
+            <select @change="setKindFilter" v-model="filterBy.kind" class="mail-select-filter">
+                <option>All</option>
+                <option>Unread</option>
+                <option>Read</option>
+            </select>
+
+            </div>
         </header>
         <section class="mail-app-container flex">
             <mail-bar @compose="composeMail" @setFolder="showFolder"></mail-bar>
@@ -46,6 +53,11 @@ export default {
         },
         emailSent() {
             console.log('email sent, show alert');
+            this.showComposeForm=false;
+            this.folder='inbox';
+        },
+        setKindFilter() {
+            
         }
     },
 
@@ -59,23 +71,34 @@ export default {
     data() {
         return {
             mailsDB: [],
-            filterBy: '',
+            tempDB:[],
+            filterBy: {
+                txt:'',
+                kind:'All'
+            },
             folder: '',
-            mailSearch: '',
             showComposeForm: false
         }
     },
 
     computed: {
         mailsToShow() {
+if(this.filterBy.kind==='All'){
+    this.tempDB =  this.tempDB = this.mailsDB.filter(mail =>mail.subject.includes(this.filterBy.txt))
+} 
+else if(this.filterBy.kind==='Unread') {
+    this.tempDB = this.mailsDB.filter(mail => (!mail.isRead)&&(mail.subject.includes(this.filterBy.txt)))
+}
+else if(this.filterBy.kind==='Read') {
+    this.tempDB = this.mailsDB.filter(mail => (mail.isRead)&&(mail.subject.includes(this.filterBy.txt)))
+}
             if (this.folder === 'starred') {
-                return this.mailsDB.filter(mail => (mail.isFav) && (!mail.isDeleted))
+                return this.tempDB.filter(mail => (mail.isFav) && (!mail.isDeleted))
             } else if (this.folder === 'trash') {
-                return this.mailsDB.filter(mail => (mail.isDeleted))
+                return this.tempDB.filter(mail => (mail.isDeleted))
             } else if (this.folder === 'inbox') {
-                return this.mailsDB.filter(mail => (!mail.isDeleted))
-            } else return this.mailsDB.filter(mail => (!mail.isDeleted))
-
+                return this.tempDB.filter(mail => (!mail.isDeleted))
+            } else return this.tempDB.filter(mail => (!mail.isDeleted))
         },
     },
 

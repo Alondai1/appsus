@@ -12,7 +12,7 @@ export default {
             <div>
                 <ui-textbox label="To:" v-model="email.sentFrom" :floatingLabel="true" :required="true" type="email" :multiLine="false"></ui-textbox>
                 <ui-textbox label="Subject:" v-model="email.subject" :floatingLabel="true" :required="true"></ui-textbox>
-                <ui-textbox label="Message:" v-model.trim="email.message" :rows="10" :floatingLabel="true" :multiLine="true"></ui-textbox>
+                <ui-textbox label="Message:" v-model.trim="email.body" :rows="10" :floatingLabel="true" :multiLine="true"></ui-textbox>
             </div>
             <div class="mail-btns flex">
                 <ui-button @click.prevent="sendMessage" size="normal" type="primary"color="primary">Send</ui-button>
