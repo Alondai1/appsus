@@ -14,8 +14,9 @@
     color: #D35E3D;
 }
 
-.mail-list ul li {
-    cursor: pointer;
+
+.bold {
+    font-weight: bold
 }
 
 /* -----------MAIL BAR------------------------------------------------- */
@@ -165,4 +166,23 @@
     position: absolute;
     left: 50%;
     top: 9%;
+}
+/* ----------------------------------------------Mail-Items--------------------------------------------
+*/
+
+.mail-item {
+    display: flex; 
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(201, 197, 197, 0.493);
+    height: 40px;
+    align-items: center;
+}
+
+
+.mail-list ul li {
+    cursor: pointer;
+}
+
+.mail-list {
+    flex: 1;
 }

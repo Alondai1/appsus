@@ -6,11 +6,11 @@ template: `
 <section class="mail-list">
 
 <ul v-if="mails">
-    <li v-for="mail, idx in mails"> 
+    <li v-for="mail, idx in mails" class="mail-item"> 
          <span :class="{fav : mail.isFav}" @click.stop="toggleFav(mail.id)"> <i class="fas fa-star"></i> </span>
-         <span class="mail-list-from">{{mail.sentFrom}}</span>
-         <span :class="isRead">{{mail.subject}}</span>
-         <span :class="isRead">{{shortedBody(mail.body)}}</span>
+         <span :class="{bold : !mail.isRead}">{{mail.sentFrom}}</span>
+         <span :class="{bold : !mail.isRead}">{{mail.subject}}</span>
+         <span class="mail-item-txt">{{shortedBody(mail.body)}}</span>
          <span>
              <span @click.stop="deleteMail(mail.id)" class="mail-trash" v-if="folder!=='trash'"> <i class="far fa-trash-alt"></i> </span>
         </span>
@@ -39,7 +39,7 @@ props:
 
 methods: {
     shortedBody(txt) {
-        return txt.substr(0, 30) + '...'
+        return txt.substr(0, 70) + '...'
     } ,
 
     deleteMail(id) { 
@@ -61,7 +61,11 @@ methods: {
 },
 
 computed: {
-    isRead() {
+    isRead(idx) {
+// if(!mail.isRead)
+console.log(idx);
+
+return 'bold'
 
     }
 },

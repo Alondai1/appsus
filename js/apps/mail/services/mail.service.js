@@ -21,7 +21,7 @@ function query() {
         "id": "5d0b6d601f598f93b2d9b516",
         "subject": 'good morning',
         "body": "Laborum consectetur do incididunt culpa esse elit eiusmod et mollit pariatur minim. Sint nulla magna duis est magna dolor minim eiusmod nulla dolor. Ea ad mollit dolor ut tempor enim aute incididunt laborum.\r\n",
-        "isRead": true,
+        "isRead": false,
         "sendAt": "2016-01-27T07:43:31 -02:00",
         "isDeleted": false,
         "toDelete": true,
