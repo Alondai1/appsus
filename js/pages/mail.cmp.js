@@ -22,12 +22,11 @@ export default {
                 v-model="filterBy.txt">
             </ui-textbox>
 
-            <select @change="setKindFilter" v-model="filterBy.kind" class="mail-select-filter">
+            <select v-model="filterBy.kind" class="mail-select-filter">
                 <option>All</option>
                 <option>Unread</option>
                 <option>Read</option>
             </select>
-
             </div>
         </header>
         <section class="mail-app-container flex">
@@ -54,11 +53,9 @@ export default {
         emailSent() {
             console.log('email sent, show alert');
             this.showComposeForm=false;
+            this.fake = !this.fake;
             
         },
-        setKindFilter() {
-            
-        }
     },
 
     created() {
