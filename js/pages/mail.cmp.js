@@ -6,7 +6,6 @@ import createMail from '../apps/mail/cmps/create-mail.cmp.js'
 
 
 
-
 export default {
     template: `
     <section class="mail-container">
@@ -32,7 +31,7 @@ export default {
         </header>
         <section class="mail-app-container flex">
             <mail-bar @compose="composeMail" @setFolder="showFolder" :mails="mailsDB"></mail-bar>
-            <list-mail :mails="mailsToShow" :folder="folder"></list-mail>
+            <list-mail :mails="mailsToShow" :folder="folder" :render="contentRender"></list-mail>
         </section>
         <mail-form @delete-form="deleteForm" v-if="showComposeForm" @email-sent="emailSent"></mail-form>
     </section>
@@ -53,9 +52,14 @@ export default {
         },
         emailSent() {
             console.log('email sent, show alert');
-            this.showComposeForm=false;
+            // this.showComposeForm = false;
+            this.contentRender += 1;
+            console.log(this.contentRender);
+        },
+        setKindFilter() {
+            this.showComposeForm = false;
             this.fake = !this.fake;
-            
+
         },
     },
 
@@ -69,27 +73,26 @@ export default {
     data() {
         return {
             mailsDB: [],
-            tempDB:[],
+            tempDB: [],
             filterBy: {
-                txt:'',
-                kind:'All'
+                txt: '',
+                kind: 'All'
             },
             folder: '',
-            showComposeForm: false
+            showComposeForm: false,
+            contentRender: 0,
         }
     },
 
     computed: {
         mailsToShow() {
-if(this.filterBy.kind==='All'){
-    this.tempDB =  this.tempDB = this.mailsDB.filter(mail =>mail.subject.includes(this.filterBy.txt))
-} 
-else if(this.filterBy.kind==='Unread') {
-    this.tempDB = this.mailsDB.filter(mail => (!mail.isRead)&&(mail.subject.includes(this.filterBy.txt)))
-}
-else if(this.filterBy.kind==='Read') {
-    this.tempDB = this.mailsDB.filter(mail => (mail.isRead)&&(mail.subject.includes(this.filterBy.txt)))
-}
+            if (this.filterBy.kind === 'All') {
+                this.tempDB = this.tempDB = this.mailsDB.filter(mail => mail.subject.includes(this.filterBy.txt))
+            } else if (this.filterBy.kind === 'Unread') {
+                this.tempDB = this.mailsDB.filter(mail => (!mail.isRead) && (mail.subject.includes(this.filterBy.txt)))
+            } else if (this.filterBy.kind === 'Read') {
+                this.tempDB = this.mailsDB.filter(mail => (mail.isRead) && (mail.subject.includes(this.filterBy.txt)))
+            }
             if (this.folder === 'starred') {
                 return this.tempDB.filter(mail => (mail.isFav) && (!mail.isDeleted))
             } else if (this.folder === 'trash') {
