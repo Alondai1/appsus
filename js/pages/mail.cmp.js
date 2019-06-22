@@ -5,6 +5,8 @@ import mailBar from '../apps/mail/cmps/mail-bar.cmp.js'
 import createMail from '../apps/mail/cmps/create-mail.cmp.js'
 
 
+
+
 export default {
     template: `
     <section class="mail-container">
@@ -28,8 +30,10 @@ export default {
             </select>
             </div>
         </header>
+
         <section class="mail-app-container flex">
             <mail-bar @compose="composeMail" @setFolder="showFolder" :mails="mailsDB"></mail-bar>
+            <img v-if="showLoader" src="../../img/loader.svg"/>
             <list-mail :mails="mailsToShow" :folder="folder" :render="contentRender"></list-mail>
         </section>
         <mail-form @delete-form="deleteForm" v-if="showComposeForm" @email-sent="emailSent"></mail-form>
@@ -51,7 +55,8 @@ export default {
         },
         emailSent() {
             console.log('email sent, show alert');
-            // this.showComposeForm = false;
+            this.showComposeForm = false;
+            this.contentRender += 1;
             console.log(this.contentRender);
             console.log(this.folder);
 
@@ -66,7 +71,13 @@ export default {
     created() {
         mailService.query()
             .then(dataBase => {
-                this.mailsDB = dataBase;
+
+                setTimeout(() => {
+                    this.showLoader = false
+                    this.mailsDB = dataBase;
+                }, 1300)
+
+
             })
     },
 
@@ -81,6 +92,7 @@ export default {
             folder: 'inbox',
             showComposeForm: false,
             contentRender: 0,
+            showLoader: true
         }
     },
 
