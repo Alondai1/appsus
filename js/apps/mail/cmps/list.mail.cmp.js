@@ -12,9 +12,12 @@ export default {
          <span :class="{bold : !mail.isRead}">{{mail.sentFrom}}</span>
          <span :class="{bold : !mail.isRead}">{{mail.subject}}</span>
          <span class="mail-item-txt">{{shortedBody(mail.body)}}</span>
-             <span @click.stop="deleteMail(mail.id)" class="mail-trash" v-if="folder!=='trash'"> <i class="far fa-trash-alt"></i> </span>
+         <span>
+             <span @click.stop="deleteMail(mail.id)" class="mail-trash" v-if="folder!=='trash'"> <i class="far fa-trash-alt"></i> </span> 
         </span>
-         <span @click.stop="restoreMail(mail.id)" class="mail-trash" v-if="folder==='trash'"><i class="fas fa-undo"></i> </span>
+         <span>
+             <span @click.stop="restoreMail(mail.id)" class="mail-trash" v-if="folder==='trash'"><i class="fas fa-undo"></i> </span>
+        </span>
     </li>
 </ul>
 
@@ -61,13 +64,7 @@ export default {
     },
 
     computed: {
-        isRead(idx) {
-            // if(!mail.isRead)
-            console.log(idx);
-
-            return 'bold'
-
-        },
+     
     },
 
 
