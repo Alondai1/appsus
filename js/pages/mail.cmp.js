@@ -14,7 +14,6 @@ export default {
         <header class="mail-header"> 
             <menu-header></menu-header>
             <img src="../../img/gmail-icon.png"/>
-            <!-- <img src="../../img/gmail-icon.png"/> -->
             <div class="mail-filter-section flex">
             <ui-textbox
                 color="green"
