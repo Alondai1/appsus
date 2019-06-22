@@ -4,16 +4,16 @@ export default {
 
     template: `
     <section class="keep-note-list flex">
-        <div class="note-item" 
+        <div class="note-item flex" 
                 v-for="note in notes" 
                 :key="note.id" >
             <h1>{{note.title}}</h1>
-            <textarea v-if="note.type==='text'" cols="30" rows="10">{{note.body}}</textarea>
+            <textarea v-if="note.type==='text'" cols="30" rows="5">{{note.body}}</textarea>
             <img v-if="note.type==='img'" :src="note.url"/>
 
                 <ui-confirm
                     confirm-button-text="Delete" deny-button-text="Keep" ref="deleteConfirm"
-                    title="Delete Post"
+                    title="Delete Note"
                     type="danger"
                     @confirm="deleteNote(note.id)"
                     @deny="">

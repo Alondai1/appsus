@@ -2,6 +2,26 @@
     flex-grow: 1;
 }
 
+.keep-note-list {
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .keep-note-list img {
     width: 200px;
+}
+.keep-note-list h1 {
+    text-align: center;
+}
+
+.keep-note-list .note-item {
+    border: 1px solid rgba(167, 167, 167, 0.548);
+    padding: 10px;
+    margin: 10px;
+    flex-direction: column;
+   justify-content: space-between;
+}
+
+.keep-loader {
+    justify-content: center;
 }
