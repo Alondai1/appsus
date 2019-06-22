@@ -3,7 +3,8 @@ import mailService from '../apps/mail/services/mail.service.js'
 import mailList from '../apps/mail/cmps/list.mail.cmp.js'
 import mailBar from '../apps/mail/cmps/mail-bar.cmp.js'
 import createMail from '../apps/mail/cmps/create-mail.cmp.js'
-
+import fullMail from '../apps/mail/cmps/full-mail.cmp.js'
+import eventBus from '../event-bus.js'
 
 
 
@@ -34,7 +35,8 @@ export default {
         <section class="mail-app-container flex">
             <mail-bar @compose="composeMail" @setFolder="showFolder" :mails="mailsDB"></mail-bar>
             <img v-if="showLoader" src="../../img/loader.svg"/>
-            <list-mail :mails="mailsToShow" :folder="folder" :render="contentRender"></list-mail>
+            <list-mail :mails="mailsToShow" :folder="folder" v-if="showList"></list-mail>
+            <full-mail v-if="showFullMail" :mailid="mailId"></full-mail>
         </section>
         <mail-form @delete-form="deleteForm" v-if="showComposeForm" @email-sent="emailSent"></mail-form>
     </section>
@@ -56,8 +58,6 @@ export default {
         emailSent() {
             console.log('email sent, show alert');
             this.showComposeForm = false;
-            this.contentRender += 1;
-            console.log(this.contentRender);
             console.log(this.folder);
 
         },
@@ -76,7 +76,15 @@ export default {
                     this.showLoader = false
                     this.mailsDB = dataBase;
                 }, 1300)
+            }),
+            eventBus.$on('mail-id', (id) => {
+                this.showList = false;
+                this.showFullMail = true;
+                this.mailId = id;
+                console.log('Mail id is:', this.mailId);
+
             })
+
     },
 
     data() {
@@ -89,8 +97,10 @@ export default {
             },
             folder: 'inbox',
             showComposeForm: false,
-            contentRender: 0,
-            showLoader: true
+            showLoader: true,
+            showList: true,
+            showFullMail: false,
+            mailId: '',
         }
     },
 
@@ -108,17 +118,16 @@ export default {
             } else if (this.folder === 'trash') {
                 return this.tempDB.filter(mail => (mail.isDeleted))
             } else if (this.folder === 'inbox') {
-
                 return this.tempDB.filter(mail => (!mail.isDeleted))
             } else return this.tempDB.filter(mail => (!mail.isDeleted))
         },
-
     },
 
     components: {
         'menu-header': menu,
         'list-mail': mailList,
         'mail-bar': mailBar,
-        'mail-form': createMail
+        'mail-form': createMail,
+        'full-mail': fullMail
     }
 }
