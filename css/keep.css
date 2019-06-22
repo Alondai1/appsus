@@ -1,3 +1,7 @@
 .keep-container {
     flex-grow: 1;
 }
+
+.keep-note-list img {
+    width: 200px;
+}

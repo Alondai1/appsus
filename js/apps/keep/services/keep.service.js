@@ -11,13 +11,15 @@ function query() {
         title: 'myPhoto',
         id: utilService.makeId(),
         type: 'img',
-        url: 'https://www.dsautomobiles.co.il/images/ds3crossback/model-list-ds3-c_700X385.png'
+        isDeleted: false,
+        url: 'https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png'
       },
       {
         title: 'test',
         id: utilService.makeId(),
         type: 'text',
-        body: 'hello world'
+        body: 'hello world',
+        isDeleted: false
       }
     ];
   }
@@ -26,7 +28,15 @@ function query() {
   return Promise.resolve(notesDB);
 }
 
+function deleteNote(id) {
+  const note = notesDB.findIndex(note => note.id === id);
+  notesDB.splice(note,1);
+  utilService.store(NOTES_KEY, notesDB)
+  return Promise.resolve()
+}
+
 
 export default {
   query,
+  deleteNote
 }
