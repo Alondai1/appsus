@@ -8,7 +8,10 @@ export default {
 <section class="mail-list">
 
 <ul v-if="mails">
-    <li v-for="mail, idx in mails" class="mail-item flex" @click="sendMailId(mail.id)">
+    <li v-for="mail, idx in mails" :class="{
+           'mail-item flex dark-background' : (idx%2===0),
+           'mail-item flex' : (idx%2!==0)}"
+              @click="sendMailId(mail.id)">
          <div :class="{fav : mail.isFav}" @click.stop="toggleFav(mail.id)"> <i class="fas fa-star"></i> </div>
          <div :class="{bold : !mail.isRead}">{{mail.sentFrom}}</div>
          <div :class="{bold : !mail.isRead}">{{mail.subject}}</div>
@@ -28,7 +31,7 @@ export default {
 `,
     data() {
         return {
-
+style: 0
         }
     },
 
@@ -65,6 +68,13 @@ export default {
                 time = utilsService.getHumanDays(timestamp)
             }
             return time;
+        }
+    },
+
+    computed: {
+        itemStyle(){
+            if (this.style%2) return 'mail-item flex dark-background'
+            return 'mail-item flex'
         }
     },
 }

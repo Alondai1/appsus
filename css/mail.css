@@ -180,6 +180,10 @@
     padding-right: 30px;
 }
 
+.dark-background {
+    background-color: rgba(184, 175, 236, 0.199);
+}
+
 .mail-item:hover {
     background-color: #fefefe;
 }
