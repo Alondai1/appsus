@@ -101,6 +101,7 @@ function getMailById(id) {
   let mails = utilService.load(MAILS_KEY);
   let mail = mails.find(mail => mail.id === id);
   mail.isRead = true;
+  utilService.store(MAILS_KEY, mails)
   return Promise.resolve(mail)
 }
 
