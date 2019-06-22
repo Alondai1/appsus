@@ -86,8 +86,7 @@ function sendMail(email) {
   let mails = utilService.load(MAILS_KEY);
   mails.unshift(email)
   utilService.store(MAILS_KEY, mails)
-  console.log(email);
-  
+  //console.log(email);
   return Promise.resolve()
 }
 
@@ -98,7 +97,12 @@ function restoreMail(id) {
   return Promise.resolve()
 }
 
-
+function getMailById(id) {
+  let mails = utilService.load(MAILS_KEY);
+  let mail = mails.find(mail => mail.id === id);
+  mail.isRead = true;
+  return Promise.resolve(mail)
+}
 
 
 export default {
@@ -106,5 +110,6 @@ export default {
   deleteMail,
   toggleFav,
   sendMail,
-  restoreMail
+  restoreMail,
+  getMailById,
 }

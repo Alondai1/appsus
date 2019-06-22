@@ -73,6 +73,7 @@
 }
 
 .mail-form {
+    z-index: 10;
     background-color: #fff;
     position: absolute;
     bottom: 3px;
@@ -167,11 +168,12 @@
     left: 50%;
     top: 9%;
 }
+
 /* ----------------------------------------------Mail-Items--------------------------------------------
 */
 
 .mail-item {
-    display: flex; 
+    display: flex;
     justify-content: space-between;
     border-bottom: 1px solid rgba(201, 197, 197, 0.493);
     height: 40px;
@@ -184,6 +186,7 @@
     cursor: pointer;
 }
 
-.mail-list {
+.mail-list,
+.mail-full {
     flex: 1;
 }

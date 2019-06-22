@@ -13,8 +13,7 @@ export default {
     <section class="mail-container">
         <header class="mail-header"> 
             <menu-header></menu-header>
-            <img src="../../img/gmail-icon.png"/>
-            <!-- <img src="../../img/gmail-icon.png"/> -->
+            <img src="../img/gmail-icon.png"/>
             <div class="mail-filter-section flex">
             <ui-textbox
                 color="green"
@@ -46,6 +45,8 @@ export default {
         showFolder(data) {
             //console.log(data);
             this.folder = data
+            this.showList = true;
+            this.showFullMail = false;
         },
 
         composeMail() {
