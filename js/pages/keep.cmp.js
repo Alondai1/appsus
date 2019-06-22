@@ -9,7 +9,7 @@ export default {
     <section class="keep-container">
     <menu-header></menu-header>
     <h1>Keep Page</h1>
-    <img v-if="showLoader" src="../../img/loader.svg"/>
+    <img v-if="showLoader" class="keep-loader" src="../../img/loader.svg"/>
     <note-list :notes="notesDB" ></note-list>
     </section>
     `,

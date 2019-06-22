@@ -8,7 +8,8 @@ export default {
             <li @click="selectedFolder('sent')" :class="{active: sentIsActive}" :active="activeLink"><i class="fas fa-share-square"></i> Sent</li>
             <li @click="selectedFolder('trash')" :class="{active: trashIsActive}" :active="activeLink"><i class="fas fa-trash"></i> Trash</li>
         </ul>
-        <ui-progress-linear color="primary" type="determinate" :progress="progress"></ui-progress-linear>
+        <ui-progress-linear color="primary" type="determinate" :progress="progress">
+        </ui-progress-linear>
     </section>
     `,
     methods: {
