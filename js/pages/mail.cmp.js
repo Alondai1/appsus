@@ -73,9 +73,7 @@ export default {
                 setTimeout(()=> {
                     this.showLoader=false
                     this.mailsDB = dataBase;
-                }, 1300)
-                
-                
+                }, 1300)  
             })
     },
 
