@@ -5,7 +5,6 @@ import mailBar from '../apps/mail/cmps/mail-bar.cmp.js'
 import createMail from '../apps/mail/cmps/create-mail.cmp.js'
 
 
-
 export default {
     template: `
     <section class="mail-container">
@@ -53,8 +52,9 @@ export default {
         emailSent() {
             console.log('email sent, show alert');
             // this.showComposeForm = false;
-            this.contentRender += 1;
             console.log(this.contentRender);
+            console.log(this.folder);
+
         },
         setKindFilter() {
             this.showComposeForm = false;
@@ -78,7 +78,7 @@ export default {
                 txt: '',
                 kind: 'All'
             },
-            folder: '',
+            folder: 'inbox',
             showComposeForm: false,
             contentRender: 0,
         }
@@ -98,9 +98,11 @@ export default {
             } else if (this.folder === 'trash') {
                 return this.tempDB.filter(mail => (mail.isDeleted))
             } else if (this.folder === 'inbox') {
+
                 return this.tempDB.filter(mail => (!mail.isDeleted))
             } else return this.tempDB.filter(mail => (!mail.isDeleted))
         },
+
     },
 
     components: {
