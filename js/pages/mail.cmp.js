@@ -76,8 +76,6 @@ export default {
                     this.showLoader = false
                     this.mailsDB = dataBase;
                 }, 1300)
-
-
             })
     },
 
