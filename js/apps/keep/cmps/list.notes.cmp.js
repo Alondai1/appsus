@@ -10,7 +10,20 @@ export default {
             <h1>{{note.title}}</h1>
             <textarea v-if="note.type==='text'" cols="30" rows="10">{{note.body}}</textarea>
             <img v-if="note.type==='img'" :src="note.url"/>
-            <span @click.stop="deleteNote(note.id)"> <i class="far fa-trash-alt"></i> </span>
+
+                <ui-confirm
+                    confirm-button-text="Delete" deny-button-text="Keep" ref="deleteConfirm"
+                    title="Delete Post"
+                    type="danger"
+                    @confirm="deleteNote(note.id)"
+                    @deny="">
+                    Are you sure you want to delete the note?
+                </ui-confirm>
+                <span @click.stop="showConfirm('deleteConfirm')"> <i class="far fa-trash-alt"></i> </span>
+                
+            </div>
+
+            <!-- <span @click.stop="deleteNote(note.id)"> <i class="far fa-trash-alt"></i> </span> -->
         </div>
     </section>
     
@@ -21,6 +34,17 @@ export default {
         deleteNote(id) {
             keepService.deleteNote(id)
                 .then(console.log('deleted on page - show alert'))
+        },
+
+        showConfirm(ref) {
+            this.$refs[ref][0].open()
+            
+        },
+        
+    },
+
+    data() {
+        return {
         }
     },
 
