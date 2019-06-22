@@ -33,7 +33,7 @@ export default {
 
         <section class="mail-app-container flex">
             <mail-bar @compose="composeMail" @setFolder="showFolder" :mails="mailsDB"></mail-bar>
-            <img v-if="showLoader" src="../../img/loader.svg"/>
+            <img v-if="showLoader" src="img/loader.svg"/>
             <list-mail :mails="mailsToShow" :folder="folder" v-if="showList"></list-mail>
             <full-mail v-if="showFullMail" :mailid="mailId"></full-mail>
         </section>
