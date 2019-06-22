@@ -1,5 +1,6 @@
 import mailService from '../services/mail.service.js'
 import eventBus from '../../../event-bus.js'
+import utilsService from '../../../services/utils.service.js';
 
 
 export default {
@@ -8,27 +9,23 @@ export default {
 
 <ul v-if="mails">
     <li v-for="mail, idx in mails" class="mail-item" @click="sendMailId(mail.id)">
-         <span :class="{fav : mail.isFav}" @click.stop="toggleFav(mail.id)"> <i class="fas fa-star"></i> </span>
-         <span :class="{bold : !mail.isRead}">{{mail.sentFrom}}</span>
-         <span :class="{bold : !mail.isRead}">{{mail.subject}}</span>
-         <span class="mail-item-txt">{{shortedBody(mail.body)}}</span>
-         <span>
+         <div :class="{fav : mail.isFav}" @click.stop="toggleFav(mail.id)"> <i class="fas fa-star"></i> </div>
+         <div :class="{bold : !mail.isRead}">{{mail.sentFrom}}</div>
+         <div :class="{bold : !mail.isRead}">{{mail.subject}}</div>
+         <div class="mail-item-txt">{{mail.body}}</div>
+         <div>{{humanDate(mail.sendAt)}}</div>
+         <div>
              <span @click.stop="deleteMail(mail.id)" class="mail-trash" v-if="folder!=='trash'"> <i class="far fa-trash-alt"></i> </span> 
-        </span>
-         <span>
+        </div>
+         <div>
              <span @click.stop="restoreMail(mail.id)" class="mail-trash" v-if="folder==='trash'"><i class="fas fa-undo"></i> </span>
-        </span>
+        </div>
     </li>
 </ul>
 
 </section>
 
 `,
-
-    created() {
-
-    },
-
     data() {
         return {
 
@@ -38,10 +35,6 @@ export default {
     props: ['mails', 'folder'],
 
     methods: {
-        shortedBody(txt) {
-            return txt.substr(0, 70) + '...'
-        },
-
         deleteMail(id) {
             mailService.deleteMail(id)
                 .then(console.log('deleted on page - show alert'))
@@ -59,13 +52,19 @@ export default {
         },
         sendMailId(id) {
             eventBus.$emit('mail-id', id)
+        },
+        humanDate(timestamp) {
+            let time;
+            let currTime = Date.now()
+            let diff = currTime - timestamp
+            let d = new Date(diff)
+
+            if (d.getHours() < 23) {
+                time = utilsService.getHumanHours(timestamp)
+            } else {
+                time = utilsService.getHumanDays(timestamp)
+            }
+            return time;
         }
-
     },
-
-    computed: {
-     
-    },
-
-
 }

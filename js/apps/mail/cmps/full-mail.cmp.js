@@ -1,5 +1,6 @@
 import eventBus from '../../../event-bus.js'
 import mailService from '../services/mail.service.js'
+import utilsService from '../../../services/utils.service.js';
 
 export default {
     props: ['mailid'],
@@ -15,7 +16,7 @@ export default {
     {{mail.body}}
     </p>
     <p>
-    {{mail.sendAt}}
+    {{humanDate(mail.sendAt)}}
     </p>
     </section>
 
@@ -26,6 +27,11 @@ export default {
                 this.mail = mail;
                 console.log(this.mail);
             })
+    },
+    methods: {
+        humanDate(timestamp) {
+            return utilsService.getHumanHours(timestamp)
+        }
     },
     data() {
         return {

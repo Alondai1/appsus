@@ -181,6 +181,38 @@
     padding-right: 30px;
 }
 
+.mail-item:hover {
+    background-color: #fefefe;
+}
+
+.mail-item div:nth-child(1) {
+    width: 20px;
+}
+
+.mail-item div:nth-child(2) {
+    width: 150px;
+    margin-right: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.mail-item div:nth-child(3) {
+    margin-right: 10px;
+    width: 300px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.mail-item div:nth-child(4) {
+    width: 200px;
+    margin-right: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
 
 .mail-list ul li {
     cursor: pointer;

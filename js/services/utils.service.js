@@ -3,7 +3,10 @@
 export default {
     makeId,
     store,
-    load
+    load,
+    getTime,
+    getHumanHours,
+    getHumanDays
 }
 
 function getRandomInt(min, max) {
@@ -22,6 +25,11 @@ function makeId(length = 5) {
     return text;
 }
 
+function getTime(diff) {
+    let time = new Date() - (1000 * diff)
+    return time
+}
+
 function store(key, any) {
     localStorage[key] = JSON.stringify(any);
 }
@@ -29,4 +37,20 @@ function store(key, any) {
 function load(key) {
     var str = localStorage[key] || 'null';
     return JSON.parse(str);
+}
+
+function getHumanHours(timestamp) {
+    let time = new Date(timestamp).toLocaleTimeString('en-GB', {
+        hour: '2-digit',
+        minute: '2-digit',
+    })
+    return time
+}
+
+function getHumanDays(timestamp) {
+    let time = new Date(timestamp).toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'short',
+    })
+    return time
 }
