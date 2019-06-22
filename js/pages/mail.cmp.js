@@ -46,6 +46,8 @@ export default {
         showFolder(data) {
             //console.log(data);
             this.folder = data
+            this.showList = true;
+            this.showFullMail = false;
         },
 
         composeMail() {
