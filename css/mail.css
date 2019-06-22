@@ -173,7 +173,6 @@
 */
 
 .mail-item {
-    display: flex;
     justify-content: space-between;
     border-bottom: 1px solid rgba(201, 197, 197, 0.493);
     height: 40px;
@@ -221,4 +220,43 @@
 .mail-list,
 .mail-full {
     flex: 1;
+}
+
+@media (max-width: 950px) {
+    .mail-item {
+        justify-content: space-between;
+        align-items: center;
+        padding-right: 30px;
+        flex-direction: column;
+        height: 100px;
+    }
+
+    .mail-item div:nth-child(1) {
+        width: 100%;
+    }
+
+    .mail-item div:nth-child(2) {
+        width: 100%;
+        margin-right: 10px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .mail-item div:nth-child(3) {
+        margin-right: 10px;
+        width: 100%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .mail-item div:nth-child(4) {
+        width: 200px;
+        margin-right: 10px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
 }

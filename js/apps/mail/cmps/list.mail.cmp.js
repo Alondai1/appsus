@@ -8,7 +8,7 @@ export default {
 <section class="mail-list">
 
 <ul v-if="mails">
-    <li v-for="mail, idx in mails" class="mail-item" @click="sendMailId(mail.id)">
+    <li v-for="mail, idx in mails" class="mail-item flex" @click="sendMailId(mail.id)">
          <div :class="{fav : mail.isFav}" @click.stop="toggleFav(mail.id)"> <i class="fas fa-star"></i> </div>
          <div :class="{bold : !mail.isRead}">{{mail.sentFrom}}</div>
          <div :class="{bold : !mail.isRead}">{{mail.subject}}</div>
