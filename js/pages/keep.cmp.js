@@ -9,6 +9,7 @@ export default {
     <section class="keep-container">
     <menu-header></menu-header>
     <h1>Keep Page</h1>
+    <img v-if="showLoader" src="../../img/loader.svg"/>
     <note-list :notes="notesDB" ></note-list>
     </section>
     `,
@@ -16,7 +17,7 @@ export default {
 created() {
     keepService.query()
     .then(dataBase => {
-
+        this.showLoader = true
         setTimeout(()=> {
             this.showLoader=false
             this.notesDB = dataBase;
@@ -26,6 +27,7 @@ created() {
 
 data() {
     return {
+        showLoader :false,
         notesDB: []
     }
 },
