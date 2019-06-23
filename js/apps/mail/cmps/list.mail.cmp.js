@@ -2,7 +2,6 @@ import mailService from '../services/mail.service.js'
 import eventBus from '../../../event-bus.js'
 import utilsService from '../../../services/utils.service.js';
 
-
 export default {
     template: `
 <section class="mail-list">
@@ -31,7 +30,7 @@ export default {
 `,
     data() {
         return {
-style: 0
+            style: 0
         }
     },
 
@@ -62,7 +61,7 @@ style: 0
             let diff = currTime - timestamp
             let d = new Date(diff)
 
-            if (d.getHours() < 23) {
+            if (d.getHours() < 24) {
                 time = utilsService.getHumanHours(timestamp)
             } else {
                 time = utilsService.getHumanDays(timestamp)
@@ -72,8 +71,8 @@ style: 0
     },
 
     computed: {
-        itemStyle(){
-            if (this.style%2) return 'mail-item flex dark-background'
+        itemStyle() {
+            if (this.style % 2) return 'mail-item flex dark-background'
             return 'mail-item flex'
         }
     },

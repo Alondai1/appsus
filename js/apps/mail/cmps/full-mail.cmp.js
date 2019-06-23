@@ -25,7 +25,7 @@ export default {
         mailService.getMailById(this.mailid)
             .then(mail => {
                 this.mail = mail;
-                console.log(this.mail);
+                //console.log(this.mail);
             })
     },
     methods: {

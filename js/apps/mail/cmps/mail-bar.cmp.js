@@ -1,3 +1,6 @@
+import mailService from '../services/mail.service.js'
+import eventBus from '../../../event-bus.js'
+
 export default {
     template: `
     <section class="mail-bar">
@@ -12,6 +15,12 @@ export default {
         </ui-progress-linear>
     </section>
     `,
+    created() {
+        eventBus.$on('mail-is-read', (ev) => {
+            console.log(ev);
+
+        })
+    },
     methods: {
         selectedFolder(data) {
             this.$emit('setFolder', data)
@@ -48,14 +57,12 @@ export default {
         },
 
         progress() {
-            this.mails.forEach(mail => {
-                if(mail.isRead) this.read ++;
-                
-                
-            });
-          
-              
-            return (this.read/this.mails.length)*100
+            mailService.getNumEmailReads()
+                .then(count => {
+                    this.read = count
+                    console.log(this.read);
+                })
+            return (this.read / this.mails.length) * 100
         }
     },
     data() {
@@ -65,7 +72,7 @@ export default {
             sentIsActive: false,
             trashIsActive: false,
             linkActive: '',
-            read:0
+            read: 0
         }
     },
 
