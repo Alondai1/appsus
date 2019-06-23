@@ -358,9 +358,8 @@ function toggleFav(id) {
 }
 
 function sendMail(email) {
-  let mails = utilService.load(MAILS_KEY);
-  mails.unshift(email)
-  utilService.store(MAILS_KEY, mails)
+  mailsDB.unshift(email)
+  utilService.store(MAILS_KEY, mailsDB)
   //console.log(email);
   return Promise.resolve()
 }
