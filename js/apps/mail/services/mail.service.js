@@ -379,6 +379,15 @@ function getMailById(id) {
   return Promise.resolve(mail)
 }
 
+function getNumEmailReads() {
+  let mails = utilService.load(MAILS_KEY);
+  let count = 0;
+  mails.forEach(mail => {
+    if (mail.isRead) count++
+  })
+  return Promise.resolve(count);
+}
+
 
 export default {
   query,
@@ -387,4 +396,5 @@ export default {
   sendMail,
   restoreMail,
   getMailById,
+  getNumEmailReads,
 }
