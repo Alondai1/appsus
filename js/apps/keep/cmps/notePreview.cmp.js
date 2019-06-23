@@ -22,8 +22,8 @@ template: `
                     Are you sure you want to delete the note?
                 </ui-confirm>
                 <div class="keep-tool-bar">
-                <span @click.stop="showConfirm('deleteConfirm')"> <i class="far fa-trash-alt"></i> </span>
-                <span :class="{pinned: note.isPinned}" @click.stop="togglePin(note.id)"><i class="fas fa-thumbtack"></i></span>
+                    <div @click.stop="showConfirm('deleteConfirm')"> <i class="far fa-trash-alt"></i> </div>
+                    <div :class="{pinned: note.isPinned}" @click.stop="togglePin(note.id)"><i class="fas fa-thumbtack"></i></div>
                 </div>
     </section>
 

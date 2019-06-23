@@ -7,10 +7,20 @@ import noteList from '../apps/keep/cmps/list.notes.cmp.js'
 export default {
     template: `
     <section class="keep-container">
+    <header class="keep-header"> 
+            <img class="animated fadeIn delay-0.7s slow" src="img/keep.png"/>
+            <div class="mail-filter-section flex">
+            <ui-textbox
+                floating-label
+                label="Search"
+                placeholder="Search"
+                v-model="filterBy">
+            </ui-textbox>
+            </div>
     <menu-header></menu-header>
-    <h1>Keep Page</h1>
+    </header>
     <img v-if="showLoader" class="keep-loader" src="../../img/loader.svg"/>
-    <note-list :notes="notesDB" ></note-list>
+    <note-list :filterBy="filterBy" :notes="notesDB" ></note-list>
     </section>
     `,
 
@@ -28,7 +38,9 @@ created() {
 data() {
     return {
         showLoader :false,
-        notesDB: []
+        notesDB: [],
+        filterBy: ''
+
     }
 },
 
