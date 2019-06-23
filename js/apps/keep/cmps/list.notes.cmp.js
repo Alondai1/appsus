@@ -10,6 +10,7 @@ export default {
             </div>
 
             <hr/>
+            
             <div  v-for="note in  notesToShow">
                 <note-preview v-if="!note.isPinned"   :note="note"> </note-preview>
             </div>

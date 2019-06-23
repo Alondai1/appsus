@@ -13,7 +13,8 @@ export default {
     <section class="mail-container">
         <header class="mail-header"> 
             <menu-header></menu-header>
-            <img class="animated fadeIn delay-0.7s slow" src="img/gmail-icon.png"/>
+                <i class="hamburger fas fa-bars"></i>
+            <img class="logo animated fadeIn delay-0.7s slow" src="img/gmail-icon.png"/>
             <div class="mail-filter-section flex">
             <ui-textbox
                 color="green"
@@ -66,6 +67,7 @@ export default {
             this.showComposeForm = false;
 
         },
+
     },
 
     created() {
