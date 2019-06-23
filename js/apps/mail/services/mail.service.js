@@ -372,10 +372,10 @@ function restoreMail(id) {
 }
 
 function getMailById(id) {
-  let mails = utilService.load(MAILS_KEY);
-  let mail = mails.find(mail => mail.id === id);
+  // let mails = utilService.load(MAILS_KEY);
+  let mail = mailsDB.find(mail => mail.id === id);
   mail.isRead = true;
-  utilService.store(MAILS_KEY, mails)
+  utilService.store(MAILS_KEY, mailsDB)
   return Promise.resolve(mail)
 }
 

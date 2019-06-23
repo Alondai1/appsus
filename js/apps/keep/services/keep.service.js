@@ -72,7 +72,9 @@ function toggleTodo(noteId , todoId) {
 
 function duplicateNote(id) {
   const oldNote = notesDB.find(note => note.id === id);
-  const note = Object.assign({}, oldNote)
+  // const note = Object.assign({}, oldNote)
+  const note = {...oldNote}
+  // const note = JSON.parse(JSON.stringify(oldNote))
   note.id = utilService.makeId()
   const noteIdx = notesDB.findIndex(note => note.id === oldNote.id);
   notesDB.splice(noteIdx, 0, note)
