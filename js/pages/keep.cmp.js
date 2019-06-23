@@ -48,6 +48,11 @@ export default {
                     icon: 'fas fa-file-alt',
                     placeholder: 'What’s on your mind...'
                 },
+                image: {
+                    field: 'url',
+                    icon: 'far fa-image',
+                    placeholder: 'Enter image URL...'
+                },
             }
 
         }
