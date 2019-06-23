@@ -12,14 +12,16 @@ function query() {
         id: utilService.makeId(),
         type: 'img',
         url: 'https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png',
-        isPinned : true
+        isPinned : true,
+        isOnEdit: false
       },
       {
         title:'Ronaldo',
         id: utilService.makeId(),
         type: 'youtube',
-        videoUrl: 'https://www.youtube.com/embed/9LoLCBjkgno',
-        isPinned : false
+        url: 'https://www.youtube.com/embed/9LoLCBjkgno',
+        isPinned : false,
+        isOnEdit: false
 
       },
       {
@@ -27,7 +29,8 @@ function query() {
         id: utilService.makeId(),
         type: 'text',
         body: 'hello world',
-        isPinned : true
+        isPinned : true,
+        isOnEdit: false
       },
 
       {
@@ -38,7 +41,8 @@ function query() {
         {todo: 'hello world', isDone: false, id: utilService.makeId()},
         {todo: 'hello world', isDone: false, id: utilService.makeId()},
         {todo: 'hello world', isDone: false, id: utilService.makeId()}],
-        isPinned : true
+        isPinned : true,
+        isOnEdit: false
       },
       
     ];
@@ -62,11 +66,30 @@ function togglePin(id) {
   return Promise.resolve()
 }
 
+function saveChanges(id , type , change) {
+  const note = notesDB.find(note => note.id === id);
+  if(type==='youtube' || type==='img') note.url = change;
+  if(type==='text') note.body = change;
+console.log(note);
+
+  utilService.store(NOTES_KEY, notesDB)
+  return Promise.resolve()
+}
+
 function toggleTodo(noteId , todoId) {
   const note = notesDB.find(note => note.id === noteId); 
   const todo =note.body.find(todo => todo.id === todoId);
   todo.isDone = !todo.isDone
   utilService.store(NOTES_KEY, notesDB)
+  return Promise.resolve()
+}
+
+function toggleEdit(id) {
+  const note = notesDB.find(note => note.id === id); 
+  note.isOnEdit = !note.isOnEdit;
+  utilService.store(NOTES_KEY, notesDB)
+  console.log(note.isOnEdit);
+  
   return Promise.resolve()
 }
 
@@ -88,5 +111,7 @@ export default {
   deleteNote,
   togglePin,
   duplicateNote,
-  toggleTodo
+  toggleTodo,
+  toggleEdit,
+  saveChanges
 }

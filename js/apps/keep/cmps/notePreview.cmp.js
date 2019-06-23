@@ -8,7 +8,7 @@ template: `
 <section class="note-item">
   <h1>{{note.title}}</h1>
   
-            <textarea v-if="note.type==='text'" cols="30" rows="5">{{note.body}}</textarea>
+            <div class="note-text" v-if="note.type==='text'">{{note.body}}</div>
             <img v-if="note.type==='img'" :src="note.url"/>
             <iframe v-if="note.type==='youtube'" width="300" height="300"
             :src="note. videoUrl">
@@ -31,8 +31,17 @@ template: `
                     <div @click.stop="showConfirm('deleteConfirm')"> <i class="far fa-trash-alt"></i> </div>
                     <div :class="{pinned: note.isPinned}" @click.stop="togglePin(note.id)"><i class="fas fa-thumbtack"></i></div>
                     <div  @click.stop="duplicateNote(note.id)"> <i class="fas fa-copy"></i> </div>
-                    <div><input type="color"></div>
+                    <div  @click.stop="editNote(note.id)"> <i class="far fa-edit"></i> </div>
                 </div>
+
+                <div v-if="note.isOnEdit" class="edit-section"> 
+                    <textarea v-model="newData" v-if="note.type==='img'">{{note.url}}</textarea>
+                    <textarea v-model="newData" v-if="note.type==='youtube'">{{note.url}}</textarea>
+                    <textarea v-model="newData" v-if="note.type==='todo'">{{note.body}}</textarea>
+                    <textarea v-model="newData" v-if="note.type==='text'">{{note.body}}</textarea>
+                    <button  @click.stop="saveChanges(note.id , note.type)">save</button>
+                </div>
+
 </section>
 
 `
@@ -60,18 +69,24 @@ methods: {
     },
 
     toggleTodo(noteId , todoId) {
-        
         keepService.toggleTodo(noteId , todoId)
         .then(console.log('todo toggled'))
+    },
 
-
+    editNote(id){
+        keepService.toggleEdit(id)
+        .then(console.log('edit'))
+    },
+    saveChanges(id , type) {
+        keepService.saveChanges(id , type , this.newData)
+        .then(console.log('edited'))
     }
 
 },
 
 data() {
     return {
-    
+    newData: ''
     }
 },
 
