@@ -12,7 +12,6 @@ template: `
             <iframe v-if="note.type==='youtube'" width="300" height="300"
             :src="note. videoUrl">
             </iframe>
-
                 <ui-confirm
                     confirm-button-text="Delete" deny-button-text="Keep" ref="deleteConfirm"
                     title="Delete Note"
@@ -24,6 +23,8 @@ template: `
                 <div class="keep-tool-bar">
                     <div @click.stop="showConfirm('deleteConfirm')"> <i class="far fa-trash-alt"></i> </div>
                     <div :class="{pinned: note.isPinned}" @click.stop="togglePin(note.id)"><i class="fas fa-thumbtack"></i></div>
+                    <div  @click.stop="duplicateNote(note.id)"> <i class="fas fa-copy"></i> </div>
+                    <div><input type="color"></div>
                 </div>
     </section>
 
@@ -38,16 +39,31 @@ methods: {
 
     showConfirm(ref) {
         
-        this.$refs[ref].open()
-        
+        this.$refs[ref].open()   
     },
 
     togglePin(id) {
         keepService.togglePin(id)
         .then(console.log('pin toggled'))
+    },
+
+    duplicateNote(id) {
+        keepService.duplicateNote(id)
+        .then(console.log('duplicated on page - show alert'))
+    },
+
+},
+
+data() {
+    return {
+    
     }
 },
 
-props: ['note']
+props: ['note'],
+
+computed: {
+   
+},
 
 }

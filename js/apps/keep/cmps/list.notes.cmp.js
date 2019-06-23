@@ -5,11 +5,11 @@ export default {
 
     template: `
     <section class="keep-note-list flex pinned-section">
-            <div class="flex" v-for="note in  notesToShow" :key="note.id+1" >
+            <div class="flex" v-for="note in  notesToShow">
                 <note-preview v-if="note.isPinned" :note="note"> </note-preview>
             </div>
 <hr/>
-            <div class="flex" v-for="note in  notesToShow" :key="note.id" >
+            <div class="flex" v-for="note in  notesToShow">
                 <note-preview v-if="!note.isPinned"   :note="note"> </note-preview>
             </div>
     </section>

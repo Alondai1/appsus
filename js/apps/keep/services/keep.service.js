@@ -51,9 +51,20 @@ function togglePin(id) {
   return Promise.resolve()
 }
 
+function duplicateNote(id) {
+  const notesDB = utilService.load(NOTES_KEY);
+  const note = notesDB.find(note => note.id === id);
+  note.id = utilService.makeId()
+  const noteIdx = notesDB.findIndex(note => note.id === id);
+  notesDB.splice(noteIdx, 0, note)
+  utilService.store(NOTES_KEY, notesDB)
+  return Promise.resolve()
+}
+
 
 export default {
   query,
   deleteNote,
-  togglePin
+  togglePin,
+  duplicateNote
 }
