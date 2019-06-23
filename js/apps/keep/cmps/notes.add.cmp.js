@@ -3,9 +3,9 @@ import keepService from '../services/keep.service.js'
 export default {
     props: ['noteTypes'],
     template: `
-    <section class="note-add-note flex">
+    <section class="keep-add-note flex">
         <input :type="fieldType" v-model="input" :placeholder="placeholder" @keyup.enter="addNote" />
-        <div v-for="(noteType, idx) in noteTypes" @click="selectType(idx)"><i :class="noteType.icon"></i></div>
+        <div v-for="(noteType, idx) in noteTypes" @click="selectType(idx)" class="keep-input-icon"><i :class="noteType.icon"></i></div>
     </section>
     `,
     data() {

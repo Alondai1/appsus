@@ -45,7 +45,7 @@ export default {
             noteTypes: {
                 text: {
                     field: 'text',
-                    icon: 'fas fa-file-alt',
+                    icon: 'fas fa-font',
                     placeholder: 'Enter your text..'
                 },
                 img: {

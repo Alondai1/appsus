@@ -1,3 +1,17 @@
+.keep-add-note {
+    height: 20px;
+    justify-content: center;
+}
+
+.keep-input-icon {
+    height: 25px;
+    width: 25px;
+    background-color: #fff;
+    font-size: 22px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
 .keep-container {
     flex-grow: 1;
 }
@@ -13,6 +27,7 @@
 .keep-note-list img {
     width: 200px;
 }
+
 .keep-note-list h1 {
     text-align: center;
 }
@@ -22,7 +37,7 @@
     padding: 10px;
     margin: 10px;
     flex-direction: column;
-   justify-content: space-between;
+    justify-content: space-between;
 }
 
 .keep-loader {
@@ -87,4 +102,3 @@ hr {
 .keep-header .ui-textbox__textarea {
     color: white;
 }
-
