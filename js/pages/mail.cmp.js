@@ -64,8 +64,7 @@ export default {
         },
         setKindFilter() {
             this.showComposeForm = false;
-            this.fake = !this.fake;
-
+        
         },
     },
 
