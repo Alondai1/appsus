@@ -1,6 +1,7 @@
 import menu from '../apps/cmps/menu-header.cmp.js'
 import keepService from '../apps/keep/services/keep.service.js'
 import noteList from '../apps/keep/cmps/list.notes.cmp.js'
+import noteAdd from '../apps/keep/cmps/notes.add.cmp.js'
 
 
 
@@ -19,34 +20,43 @@ export default {
             </div>
     <menu-header></menu-header>
     </header>
-    <img v-if="showLoader" class="keep-loader" src="../../img/loader.svg"/>
+    <img v-if="showLoader" class="keep-loader" src="img/loader.svg"/>
+    <note-add :noteType="noteTypes"></note-add>
     <note-list :filterBy="filterBy" :notes="notesDB" ></note-list>
     </section>
     `,
 
-created() {
-    keepService.query()
-    .then(dataBase => {
-        this.showLoader = true
-        setTimeout(()=> {
-            this.showLoader=false
-            this.notesDB = dataBase;
-        }, 1300)  
-    })
-},
+    created() {
+        keepService.query()
+            .then(dataBase => {
+                this.showLoader = true
+                setTimeout(() => {
+                    this.showLoader = false
+                    this.notesDB = dataBase;
+                }, 1300)
+            })
+    },
 
-data() {
-    return {
-        showLoader :false,
-        notesDB: [],
-        filterBy: ''
+    data() {
+        return {
+            showLoader: false,
+            notesDB: [],
+            filterBy: '',
+            noteTypes: {
+                text: {
+                    field: 'text',
+                    icon: 'fas fa-file-alt',
+                    placeholder: 'What’s on your mind...'
+                },
+            }
 
+        }
+    },
+
+
+    components: {
+        'menu-header': menu,
+        'note-list': noteList,
+        'note-add': noteAdd
     }
-},
-
-
-components: {
-    'menu-header': menu,
-    'note-list': noteList
-}
 }
