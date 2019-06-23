@@ -31,7 +31,7 @@ export default {
     methods: {
         humanDate(timestamp) {
             return utilsService.getHumanHours(timestamp)
-        }
+        },
     },
     data() {
         return {

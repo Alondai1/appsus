@@ -54,6 +54,7 @@ export default {
         },
         sendMailId(id) {
             eventBus.$emit('mail-id', id)
+            eventBus.$emit('mail-is-read', true)
         },
         humanDate(timestamp) {
             let time;

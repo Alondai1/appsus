@@ -17,9 +17,14 @@ export default {
     `,
     created() {
         eventBus.$on('mail-is-read', (ev) => {
-            console.log(ev);
-
-        })
+                console.log(ev);
+                mailService.getNumEmailReads()
+                    .then(count => {
+                        this.read = count
+                        //console.log(this.read);
+                    })
+            }),
+            this.countEmailRead()
     },
     methods: {
         selectedFolder(data) {
@@ -29,6 +34,12 @@ export default {
         },
         compose() {
             this.$emit('compose')
+        },
+        countEmailRead() {
+            mailService.getNumEmailReads()
+                .then(count => {
+                    this.read = count
+                })
         }
     },
     computed: {
@@ -57,11 +68,7 @@ export default {
         },
 
         progress() {
-            mailService.getNumEmailReads()
-                .then(count => {
-                    this.read = count
-                    console.log(this.read);
-                })
+            console.log('computed', this.read);
             return (this.read / this.mails.length) * 100
         }
     },
@@ -72,7 +79,7 @@ export default {
             sentIsActive: false,
             trashIsActive: false,
             linkActive: '',
-            read: 0
+            read: 0,
         }
     },
 

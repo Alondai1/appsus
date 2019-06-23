@@ -380,8 +380,9 @@ function getMailById(id) {
 }
 
 function getNumEmailReads() {
+  let mails = utilService.load(MAILS_KEY);
   let count = 0;
-  mailsDB.forEach(mail => {
+  mails.forEach(mail => {
     if (mail.isRead) count++
   })
   return Promise.resolve(count);
