@@ -3,8 +3,9 @@ import eventBus from '../../../event-bus.js'
 
 export default {
     template: `
-    <section class="mail-bar">
+    <section>
         <div class="mail-compose" @click="compose"><i class="fas fa-plus"></i> <span>compose</span></div>
+        <div class="mail-bar">
         <ul>
             <li @click="selectedFolder('inbox')" :class="{active: inboxIsActive}" :active="activeLink"><i class="fas fa-inbox"></i> Inbox</li>
             <li @click="selectedFolder('starred')" :class="{active: starredIsActive}" :active="activeLink"><i class="fas fa-star"></i> Starred</li>
@@ -13,6 +14,7 @@ export default {
         </ul>
         <ui-progress-linear color="primary" type="determinate" :progress="progress">
         </ui-progress-linear>
+</div>
     </section>
     `,
     created() {

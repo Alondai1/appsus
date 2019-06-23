@@ -11,7 +11,7 @@ export default {
             <div class="note-text" v-if="note.type==='text'">{{note.body}}</div>
             <img v-if="note.type==='img'" :src="note.url"/>
             <iframe v-if="note.type==='youtube'" width="300" height="300"
-            :src="note. videoUrl">
+            :src="note.url">
             </iframe>
             <ul v-if="note.type==='todo'">
                 <li v-for="todo in note.body"
