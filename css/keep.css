@@ -1,6 +1,24 @@
 .keep-add-note {
-    height: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     justify-content: center;
+}
+
+.keep-input {
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.selected {
+    color: #000;
+}
+
+.keep-input input {
+    border: 0;
+    width: 300px;
+    margin-right: 10px;
+    outline: 0;
 }
 
 .keep-input-icon {
@@ -8,8 +26,13 @@
     width: 25px;
     background-color: #fff;
     font-size: 22px;
-    margin-left: 15px;
+    margin-right: 15px;
     cursor: pointer;
+    color: #ccc;
+}
+
+.keep-input-icon:hover {
+    color: #000;
 }
 
 .keep-container {
