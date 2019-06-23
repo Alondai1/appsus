@@ -117,6 +117,8 @@ export default {
                 return this.tempDB.filter(mail => (mail.isFav) && (!mail.isDeleted))
             } else if (this.folder === 'trash') {
                 return this.tempDB.filter(mail => (mail.isDeleted))
+            } else if (this.folder === 'sent') {
+                return this.tempDB.filter(mail => (mail.isSent))
             } else if (this.folder === 'inbox') {
                 return this.tempDB.filter(mail => (!mail.isDeleted))
             } else return this.tempDB.filter(mail => (!mail.isDeleted))

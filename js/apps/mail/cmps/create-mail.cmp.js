@@ -41,6 +41,7 @@ export default {
                 toDelete: false,
                 isFav: false,
                 sendAt: null,
+                isSent: true
             },
             errorMsg: '',
         }
