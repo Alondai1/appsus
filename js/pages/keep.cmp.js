@@ -21,7 +21,7 @@ export default {
     <menu-header></menu-header>
     </header>
     <img v-if="showLoader" class="keep-loader" src="img/loader.svg"/>
-    <note-add :noteType="noteTypes"></note-add>
+    <note-add :noteTypes="noteTypes"></note-add>
     <note-list :filterBy="filterBy" :notes="notesDB" ></note-list>
     </section>
     `,
@@ -46,7 +46,7 @@ export default {
                 text: {
                     field: 'text',
                     icon: 'fas fa-file-alt',
-                    placeholder: 'What’s on your mind...'
+                    placeholder: 'Enter your text..'
                 },
                 image: {
                     field: 'url',
