@@ -5,13 +5,12 @@ import utilsService from '../../../services/utils.service.js';
 export default {
     template: `
 <section class="mail-list">
-
-<ul v-if="mails">
-    <li v-for="mail, idx in mails" :class="{
+    <ul v-if="mails">
+        <li v-for="mail, idx in mails" :class="{
            'mail-item flex dark-background' : (idx%2===0),
            'mail-item flex' : (idx%2!==0)}"
               @click="sendMailId(mail.id)">
-         <div :class="{fav : mail.isFav}" @click.stop="toggleFav(mail.id)"> <i class="fas fa-star"></i> </div>
+              <div :class="{fav : mail.isFav}" @click.stop="toggleFav(mail.id)"> <i class="fas fa-star"></i> </div>
          <div :class="{bold : !mail.isRead}">{{mail.sentFrom}}</div>
          <div :class="{bold : !mail.isRead}">{{mail.subject}}</div>
          <div class="mail-item-txt">{{mail.body}}</div>
@@ -19,11 +18,12 @@ export default {
          <div>
              <span @click.stop="deleteMail(mail.id)" class="mail-trash" v-if="folder!=='trash'"> <i class="far fa-trash-alt"></i> </span> 
         </div>
-         <div>
+        <div>
              <span @click.stop="restoreMail(mail.id)" class="mail-trash" v-if="folder==='trash'"><i class="fas fa-undo"></i> </span>
-        </div>
-    </li>
-</ul>
+            </div>
+        </li>
+    </ul>
+    <div v-if="!mails.length"> No Mails To Show</div>
 
 </section>
 
