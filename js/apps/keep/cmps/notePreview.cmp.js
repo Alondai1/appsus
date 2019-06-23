@@ -7,11 +7,18 @@ template: `
 
 <section class="note-item">
   <h1>{{note.title}}</h1>
+  
             <textarea v-if="note.type==='text'" cols="30" rows="5">{{note.body}}</textarea>
             <img v-if="note.type==='img'" :src="note.url"/>
             <iframe v-if="note.type==='youtube'" width="300" height="300"
             :src="note. videoUrl">
             </iframe>
+            <ul v-if="note.type==='todo'">
+                <li v-for="todo in note.body"
+                 :class="{done: todo.isDone}" 
+                 @click.stop="toggleTodo(note.id, todo.id)"> {{todo.todo}}</li>
+            </ul>
+
                 <ui-confirm
                     confirm-button-text="Delete" deny-button-text="Keep" ref="deleteConfirm"
                     title="Delete Note"
@@ -26,7 +33,7 @@ template: `
                     <div  @click.stop="duplicateNote(note.id)"> <i class="fas fa-copy"></i> </div>
                     <div><input type="color"></div>
                 </div>
-    </section>
+</section>
 
 `
 ,
@@ -51,6 +58,14 @@ methods: {
         keepService.duplicateNote(id)
         .then(console.log('duplicated on page - show alert'))
     },
+
+    toggleTodo(noteId , todoId) {
+        
+        keepService.toggleTodo(noteId , todoId)
+        .then(console.log('todo toggled'))
+
+
+    }
 
 },
 

@@ -29,6 +29,17 @@ function query() {
         body: 'hello world',
         isPinned : true
       },
+
+      {
+        title: 'My todos',
+        id: utilService.makeId(),
+        type: 'todo',
+        body: [
+        {todo: 'hello world', isDone: false, id: utilService.makeId()},
+        {todo: 'hello world', isDone: false, id: utilService.makeId()},
+        {todo: 'hello world', isDone: false, id: utilService.makeId()}],
+        isPinned : true
+      },
       
     ];
   }
@@ -51,11 +62,19 @@ function togglePin(id) {
   return Promise.resolve()
 }
 
+function toggleTodo(noteId , todoId) {
+  const note = notesDB.find(note => note.id === noteId); 
+  const todo =note.body.find(todo => todo.id === todoId);
+  todo.isDone = !todo.isDone
+  utilService.store(NOTES_KEY, notesDB)
+  return Promise.resolve()
+}
+
 function duplicateNote(id) {
-  const notesDB = utilService.load(NOTES_KEY);
-  const note = notesDB.find(note => note.id === id);
+  const oldNote = notesDB.find(note => note.id === id);
+  const note = Object.assign({}, oldNote)
   note.id = utilService.makeId()
-  const noteIdx = notesDB.findIndex(note => note.id === id);
+  const noteIdx = notesDB.findIndex(note => note.id === oldNote.id);
   notesDB.splice(noteIdx, 0, note)
   utilService.store(NOTES_KEY, notesDB)
   return Promise.resolve()
@@ -66,5 +85,6 @@ export default {
   query,
   deleteNote,
   togglePin,
-  duplicateNote
+  duplicateNote,
+  toggleTodo
 }
