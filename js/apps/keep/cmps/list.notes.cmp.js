@@ -4,12 +4,13 @@ import notePreview from './notePreview.cmp.js'
 export default {
 
     template: `
-    <section class="keep-note-list flex pinned-section">
-            <div class="flex" v-for="note in  notesToShow">
+    <section class="keep-note-list flex">
+            <div class="pinned-section " v-for="note in  notesToShow">
                 <note-preview v-if="note.isPinned" :note="note"> </note-preview>
             </div>
-<hr/>
-            <div class="flex" v-for="note in  notesToShow">
+
+            <hr/>
+            <div  v-for="note in  notesToShow">
                 <note-preview v-if="!note.isPinned"   :note="note"> </note-preview>
             </div>
     </section>
