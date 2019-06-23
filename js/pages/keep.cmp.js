@@ -53,6 +53,16 @@ export default {
                     icon: 'far fa-image',
                     placeholder: 'Enter image URL...'
                 },
+                video: {
+                    field: 'url',
+                    icon: 'fab fa-youtube',
+                    placeholder: 'Enter video URL...'
+                },
+                todo: {
+                    field: 'text',
+                    icon: 'fas fa-list',
+                    placeholder: 'Enter your todo list (comma separated)...'
+                }
             }
 
         }
