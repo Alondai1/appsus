@@ -122,15 +122,31 @@ function addNote(input, data) {
   data.id = utilService.makeId()
 
   if (data.type === 'text') {
-    console.log('text added');
+    data.body = input
   } else if (data.type === 'img') {
-    console.log('img added');
+    data.url = input;
   } else if (data.type === 'youtube') {
-    console.log('todo added');
+    input.replace(/^http.*v=/g, '')
+
+    data.url = `https://www.youtube.com/embed/${input}`
+    console.log('clean youtube:', data.url);
   } else if (data.type === 'todo') {
-    console.log('img added');
+    data.body = []
+    let todos = input.split(',')
+    for (var i = 0; i < todos.length; i++) {
+      let todoBody = {
+        todo: todos[i],
+        isDone: false,
+        id: utilService.makeId()
+      }
+      data.body.push(todoBody)
+    }
+    console.log('todo added', data);
   }
 
+  notesDB.unshift(data)
+  console.log(notesDB);
+  utilService.store(NOTES_KEY, notesDB)
 }
 
 

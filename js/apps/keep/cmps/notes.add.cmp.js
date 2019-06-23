@@ -14,6 +14,7 @@ export default {
                 id: '',
                 type: 'text',
                 isPinned: false,
+                isOnEdit: false,
             },
             input: ''
 
@@ -27,6 +28,7 @@ export default {
         },
         addNote() {
             keepService.addNote(this.input, this.newNote)
+            this.input = ''
             console.log('note added', this.input);
         }
     },

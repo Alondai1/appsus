@@ -48,15 +48,15 @@ export default {
                     icon: 'fas fa-file-alt',
                     placeholder: 'Enter your text..'
                 },
-                image: {
+                img: {
                     field: 'url',
                     icon: 'far fa-image',
                     placeholder: 'Enter image URL...'
                 },
-                video: {
+                youtube: {
                     field: 'url',
                     icon: 'fab fa-youtube',
-                    placeholder: 'Enter video URL...'
+                    placeholder: 'Enter youtube URL...'
                 },
                 todo: {
                     field: 'text',

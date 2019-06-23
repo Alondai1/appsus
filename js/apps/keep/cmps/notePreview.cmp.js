@@ -3,7 +3,7 @@ import keepService from '../services/keep.service.js'
 export default {
 
 
-template: `
+    template: `
 
 <section class="note-item">
   <h1>{{note.title}}</h1>
@@ -44,56 +44,55 @@ template: `
 
 </section>
 
-`
-,
+`,
 
-methods: {
-    deleteNote(id) {
-        keepService.deleteNote(id)
-            .then(console.log('deleted on page - show alert'))
+    methods: {
+        deleteNote(id) {
+            keepService.deleteNote(id)
+                .then(console.log('deleted on page - show alert'))
+        },
+
+        showConfirm(ref) {
+
+            this.$refs[ref].open()
+        },
+
+        togglePin(id) {
+            keepService.togglePin(id)
+                .then(console.log('pin toggled'))
+        },
+
+        duplicateNote(id) {
+            keepService.duplicateNote(id)
+                .then(console.log('duplicated on page - show alert'))
+        },
+
+        toggleTodo(noteId, todoId) {
+            keepService.toggleTodo(noteId, todoId)
+                .then(console.log('todo toggled'))
+        },
+
+        editNote(id) {
+            keepService.toggleEdit(id)
+                .then(console.log('edit'))
+        },
+        saveChanges(id, type) {
+            keepService.saveChanges(id, type, this.newData)
+                .then(console.log('edited'))
+        }
+
     },
 
-    showConfirm(ref) {
-        
-        this.$refs[ref].open()   
+    data() {
+        return {
+            newData: ''
+        }
     },
 
-    togglePin(id) {
-        keepService.togglePin(id)
-        .then(console.log('pin toggled'))
+    props: ['note'],
+
+    computed: {
+
     },
-
-    duplicateNote(id) {
-        keepService.duplicateNote(id)
-        .then(console.log('duplicated on page - show alert'))
-    },
-
-    toggleTodo(noteId , todoId) {
-        keepService.toggleTodo(noteId , todoId)
-        .then(console.log('todo toggled'))
-    },
-
-    editNote(id){
-        keepService.toggleEdit(id)
-        .then(console.log('edit'))
-    },
-    saveChanges(id , type) {
-        keepService.saveChanges(id , type , this.newData)
-        .then(console.log('edited'))
-    }
-
-},
-
-data() {
-    return {
-    newData: ''
-    }
-},
-
-props: ['note'],
-
-computed: {
-   
-},
 
 }

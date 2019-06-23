@@ -18,30 +18,25 @@ export default {
     
     `,
 
-    methods: {
-       
-        
+    data() {
+        return {}
     },
 
-    data() {
-        return {
+
+    props: ['notes', 'filterBy'],
+
+
+
+    components: {
+        'note-preview': notePreview
+    },
+
+    computed: {
+        notesToShow() {
+            // return this.notes.filter(note => note.title.includes(this.filterBy))
+            return this.notes;
         }
     },
-
-
-props: ['notes', 'filterBy'],
-
-
-
-components: {
-    'note-preview':notePreview
-},
-
-computed: {
-    notesToShow() {
-return  this.notes.filter(note => note.title.includes(this.filterBy))
-    }
-},
 
 
 
