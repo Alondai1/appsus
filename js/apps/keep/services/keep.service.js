@@ -11,16 +11,25 @@ function query() {
         title: 'myPhoto',
         id: utilService.makeId(),
         type: 'img',
-        isDeleted: false,
-        url: 'https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png'
+        url: 'https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png',
+        isPinned : true
+      },
+      {
+        title:'Ronaldo',
+        id: utilService.makeId(),
+        type: 'youtube',
+        videoUrl: 'https://www.youtube.com/embed/9LoLCBjkgno',
+        isPinned : false
+
       },
       {
         title: 'test',
         id: utilService.makeId(),
         type: 'text',
         body: 'hello world',
-        isDeleted: false
-      }
+        isPinned : true
+      },
+      
     ];
   }
   notesDB = notes;
@@ -35,8 +44,16 @@ function deleteNote(id) {
   return Promise.resolve()
 }
 
+function togglePin(id) {
+  const note = notesDB.find(note => note.id === id);
+  note.isPinned = !note.isPinned;
+  utilService.store(NOTES_KEY, notesDB)
+  return Promise.resolve()
+}
+
 
 export default {
   query,
-  deleteNote
+  deleteNote,
+  togglePin
 }
