@@ -98,9 +98,18 @@ hr {
 .keep-header .ui-textbox__content {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 
 .keep-header .ui-textbox__textarea {
     color: white;
+}
+
+.ui-select__label {
+    width: 14%;
+    margin: -35px auto;
+}
+
+.keep-filter-section {
+     flex-direction: column;
 }

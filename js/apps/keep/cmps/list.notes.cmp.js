@@ -24,7 +24,7 @@ export default {
     },
 
 
-    props: ['notes', 'filterBy'],
+    props: ['notes', 'filterBy', 'filterByType'],
 
 
 
@@ -34,8 +34,14 @@ export default {
 
     computed: {
         notesToShow() {
-            // return this.notes.filter(note => note.title.includes(this.filterBy))
-            return this.notes;
+           
+            if(!this.filterByType) return this.notes
+            if(this.filterByType==='text') {
+                return this.notes.filter(note => note.type ===this.filterByType && note.body.includes(this.filterBy)
+                )
+            }
+            return this.notes.filter(note => note.type ===this.filterByType)
+            
         }
     },
 

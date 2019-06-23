@@ -10,19 +10,28 @@ export default {
     <section class="keep-container">
     <header class="keep-header"> 
             <img class="animated fadeIn delay-0.7s slow" src="img/keep.png"/>
-            <div class="mail-filter-section flex">
+            <div class="keep-filter-section flex">
             <ui-textbox
+                :disabled = filterOptions
                 floating-label
                 label="Search"
                 placeholder="Search"
                 v-model="filterBy">
             </ui-textbox>
+            <ui-select
+                label="Filter"
+                placeholder="Select Filter"
+                :options="['','text','youtube','todo', 'img']"
+                v-model="filterByType">
+            </ui-select>
+
+            
             </div>
     <menu-header></menu-header>
     </header>
     <img v-if="showLoader" class="keep-loader" src="img/loader.svg"/>
     <note-add :noteTypes="noteTypes"></note-add>
-    <note-list :filterBy="filterBy" :notes="notesDB" ></note-list>
+    <note-list :filterBy="filterBy" :filterByType="filterByType" :notes="notesDB" ></note-list>
     </section>
     `,
 
@@ -37,11 +46,19 @@ export default {
             })
     },
 
+    computed: {
+        filterOptions() {
+            if(this.filterByType==='text') return false;
+            return true;
+        }
+    },
+
     data() {
         return {
             showLoader: false,
             notesDB: [],
             filterBy: '',
+            filterByType:'',
             noteTypes: {
                 text: {
                     field: 'text',
