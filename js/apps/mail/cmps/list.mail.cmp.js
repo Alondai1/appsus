@@ -5,7 +5,7 @@ import utilsService from '../../../services/utils.service.js';
 export default {
     template: `
 <section class="mail-list">
-
+<div v-if="!mails.length"> No Messeges To Show</div>
 <ul v-if="mails">
     <li v-for="mail, idx in mails" :class="{
            'mail-item flex dark-background' : (idx%2===0),
