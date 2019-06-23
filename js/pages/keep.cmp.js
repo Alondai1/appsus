@@ -30,7 +30,7 @@ export default {
     <menu-header></menu-header>
     </header>
     <img v-if="showLoader" class="keep-loader" src="img/loader.svg"/>
-    <note-add :noteTypes="noteTypes"></note-add>
+<note-add :noteTypes="noteTypes" v-if="!showLoader"></note-add>
     <note-list :filterBy="filterBy" :filterByType="filterByType" :notes="notesDB" ></note-list>
     </section>
     `,

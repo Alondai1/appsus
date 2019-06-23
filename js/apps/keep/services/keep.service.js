@@ -126,10 +126,11 @@ function addNote(input, data) {
   } else if (data.type === 'img') {
     data.url = input;
   } else if (data.type === 'youtube') {
-    input.replace(/^http.*v=/g, '')
 
+    input = input.replace(/^http.*v=/gi, '')
     data.url = `https://www.youtube.com/embed/${input}`
     console.log('clean youtube:', data.url);
+
   } else if (data.type === 'todo') {
     data.body = []
     let todos = input.split(',')

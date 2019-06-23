@@ -4,8 +4,12 @@ export default {
     props: ['noteTypes'],
     template: `
     <section class="keep-add-note flex">
-        <input :type="fieldType" v-model="input" :placeholder="placeholder" @keyup.enter="addNote" />
-        <div v-for="(noteType, idx) in noteTypes" @click="selectType(idx)" class="keep-input-icon"><i :class="noteType.icon"></i></div>
+        <div class="keep-input flex">
+            <input :type="fieldType" v-model="input" :placeholder="placeholder" @keyup.enter="addNote" />
+            <div v-for="(noteType, idx) in noteTypes" @click="selectType(idx)" class="keep-input-icon">
+                <i :class="noteType.icon"></i>
+            </div>
+        </div>
     </section>
     `,
     data() {
@@ -16,7 +20,7 @@ export default {
                 isPinned: false,
                 isOnEdit: false,
             },
-            input: ''
+            input: '',
 
         }
     },
@@ -30,14 +34,14 @@ export default {
             keepService.addNote(this.input, this.newNote)
             this.input = ''
             console.log('note added', this.input);
-        }
+        },
     },
     computed: {
         placeholder() {
             return this.noteTypes[this.newNote.type].placeholder
         },
         fieldType() {
-            return this.noteTypes[this.newNote.type].placeholder
-        }
+            return this.noteTypes[this.newNote.type].field
+        },
     },
 }
