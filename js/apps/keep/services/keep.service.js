@@ -13,7 +13,7 @@ function query() {
       url: 'https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png',
       isPinned: true,
       isOnEdit: false,
-      bgc: 'red'
+      bgc: ''
     },
     {
       title: 'Ronaldo',
@@ -22,7 +22,7 @@ function query() {
       url: 'https://www.youtube.com/embed/9LoLCBjkgno',
       isPinned: false,
       isOnEdit: false,
-      bgc: 'blue'
+      bgc: ''
 
     },
     {
@@ -32,7 +32,7 @@ function query() {
       body: 'hello world',
       isPinned: true,
       isOnEdit: false,
-      bgc: 'yellow'
+      bgc: ''
     },
 
     {
