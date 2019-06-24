@@ -1,11 +1,12 @@
 @import './mail.css';
 @import './keep.css';
 @import './home.css';
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
 
 /* About ---------------------------------------*/
-.about-container {
-    flex-grow: 1;
-}
+
+
+
 
 /* Fonts ---------------------------------------*/
 @font-face {
