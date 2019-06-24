@@ -388,10 +388,15 @@ function getNumEmailReads() {
   return Promise.resolve(count);
 }
 
-function toggleHamburger () {
-  let menuEl =  document.querySelector(".mail-bar")
-  if (menuEl.style.display==='block') menuEl.style.display='none'
-  else menuEl.style.display='block'
+function toggleHamburger() {
+  let menuEl = document.querySelector(".mail-bar")
+  if (menuEl.style.display === 'block') {
+    document.querySelector('.toogleMenu').innerHTML = `<i class="hamburger fas fa-bars"></i>`
+    menuEl.style.display = 'none'
+  } else {
+    menuEl.style.display = 'block'
+    document.querySelector('.toogleMenu').innerHTML = `<i class="hamburger fas fa-times"></i>`
+  }
 }
 
 
