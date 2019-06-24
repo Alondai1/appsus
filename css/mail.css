@@ -250,9 +250,7 @@
 
 @media (max-width: 950px) {
     .mail-item {
-        justify-content: space-between;
-        align-items: center;
-        padding-right: 30px;
+        justify-content: flex-start;
         flex-direction: column;
         height: 100px;
     }
@@ -278,7 +276,7 @@
     }
 
     .mail-item div:nth-child(4) {
-        width: 200px;
+        width: 600px;
         margin-right: 0;
         text-overflow: ellipsis;
         overflow: hidden;
@@ -326,6 +324,31 @@
 
     .mail-item * {
         margin-right: 0;
+    }
+
+    .mail-item div:nth-child(2) {
+        order: 2;
+    }
+
+    .mail-item div:nth-child(3) {
+        order: 2;
+    }
+
+    .mail-item div:nth-child(4) {
+        order: 3;
+        width: 320px;
+    }
+
+    .mail-item div:nth-child(5) {
+        order: 1;
+    }
+
+    .mail-item div:nth-child(6) {
+        order: 6;
+    }
+
+    .mail-item div:nth-child(1) {
+        order: 5;
     }
 
     .mail-header .logo {
@@ -382,5 +405,9 @@
 
     .mail-filter-section select {
         margin-right: 0;
+    }
+
+    .mail-trash {
+        font-size: 25px;
     }
 }
