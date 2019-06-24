@@ -23,6 +23,7 @@ export default {
                 type: 'text',
                 isPinned: false,
                 isOnEdit: false,
+                bgc: 'white'
             },
             input: '',
 

@@ -32,6 +32,7 @@ export default {
                     <div :class="{pinned: note.isPinned}" @click.stop="togglePin(note.id)"><i class="fas fa-thumbtack"></i></div>
                     <div  @click.stop="duplicateNote(note.id)"> <i class="fas fa-copy"></i> </div>
                     <div  @click.stop="editNote(note.id)"> <i class="far fa-edit"></i> </div>
+                    <div> <input v-model="newColor" @input.stop="changeColor(note.id)" type="color"/> </div>
                 </div>
 
                 <div v-if="note.isOnEdit" class="edit-section"> 
@@ -79,13 +80,19 @@ export default {
         saveChanges(id, type) {
             keepService.saveChanges(id, type, this.newData)
                 .then(console.log('edited'))
+        },
+        changeColor(id) {
+            keepService.changeColor(id , this.newColor)
+            .then(console.log('color changed on page - show alert'))
+
         }
 
     },
 
     data() {
         return {
-            newData: ''
+            newData: '',
+            newColor:''
         }
     },
 
@@ -93,10 +100,9 @@ export default {
 
     computed: {
         test() {
-            return {
-                color: 'white',
-                backgroundColor: 'blue'
-            }
+            
+                if(this.note.bgc) return {backgroundColor: this.note.bgc}
+        
         }
     },
 

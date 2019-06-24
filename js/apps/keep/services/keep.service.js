@@ -12,7 +12,8 @@ function query() {
         type: 'img',
         url: 'https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png',
         isPinned: true,
-        isOnEdit: false
+        isOnEdit: false,
+        bgc: 'red'
       },
       {
         title: 'Ronaldo',
@@ -20,7 +21,8 @@ function query() {
         type: 'youtube',
         url: 'https://www.youtube.com/embed/9LoLCBjkgno',
         isPinned: false,
-        isOnEdit: false
+        isOnEdit: false,
+        bgc: 'blue'
 
       },
       {
@@ -29,7 +31,8 @@ function query() {
         type: 'text',
         body: 'hello world',
         isPinned: true,
-        isOnEdit: false
+        isOnEdit: false,
+        bgc: 'yellow'
       },
 
       {
@@ -77,6 +80,13 @@ function togglePin(id) {
   return Promise.resolve()
 }
 
+function changeColor(id, color) {
+  const note = notesDB.find(note => note.id === id);
+  note.bgc = color;
+  utilService.store(NOTES_KEY, notesDB)
+  return Promise.resolve()
+}
+
 function saveChanges(id, type, input) {
   const note = notesDB.find(note => note.id === id);
   if (type === 'img') note.url = input;
@@ -90,7 +100,6 @@ function saveChanges(id, type, input) {
     for (var i = 0; i < todos.length; i++) {
       note.body[i].todo = todos[i]
     }
-
   }
 
   utilService.store(NOTES_KEY, notesDB)
@@ -168,5 +177,6 @@ export default {
   toggleTodo,
   toggleEdit,
   saveChanges,
-  addNote
+  addNote,
+  changeColor
 }
