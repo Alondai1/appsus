@@ -40,7 +40,11 @@ export default {
             <mail-bar @compose="composeMail" @setFolder="showFolder" :mails="mailsDB"></mail-bar>
             <img v-if="showLoader" src="img/loader.svg" class="mail-loading-img">
             <list-mail :loader="showLoader" :mails="mailsToShow" :folder="folder" v-if="showList"></list-mail>
-            <full-mail v-if="showFullMail" :mailid="mailId"></full-mail>
+            <full-mail @backToMails="backToMails" 
+            v-if="showFullMail" 
+            :folder="this.folder" 
+            :mailid="mailId">
+            </full-mail>
         </section>
         <mail-form @delete-form="deleteForm" v-if="showComposeForm" @email-sent="emailSent"></mail-form>
     </section>
@@ -73,6 +77,12 @@ export default {
         },
         toggleHamburger() {
             mailService.toggleHamburger()
+        },
+
+        backToMails(folder) {
+            this.folder = folder;
+            this.showList = true;
+            this.showFullMail = false;
         }
 
     },
@@ -90,7 +100,6 @@ export default {
                 this.showList = false;
                 this.showFullMail = true;
                 this.mailId = id;
-                console.log('Mail id is:', this.mailId);
 
             })
 

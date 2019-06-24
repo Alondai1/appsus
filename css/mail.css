@@ -45,6 +45,15 @@
     background-color: white;
 }
 
+.back-btn {
+    background-color: #E19F20;
+    border: 1px solid black;
+}
+
+.btns-container {
+    margin: 10px;
+}
+
 
 /* -----------MAIL BAR------------------------------------------------- */
 

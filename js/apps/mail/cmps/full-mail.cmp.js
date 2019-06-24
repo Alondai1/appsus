@@ -4,7 +4,7 @@ import mailService from '../services/mail.service.js'
 import utilsService from '../../../services/utils.service.js';
 
 export default {
-    props: ['mailid'],
+    props: ['mailid' , 'folder'],
     template: `
     <section v-if="mail" class="mail-full">
     <p>
@@ -20,9 +20,11 @@ export default {
     {{humanDate(mail.sendAt)}}
     </p>
 
-    
+    <div class="btns-container">    
     <button @click.stop ="mailToForm(mail)" class="save-email-btn">Save As A Note</button>
     <span class="saved-popup animated bounceIn" v-if="savedPopupModal"> Mail saved as a note</span>
+    <button class="back-btn" @click="backToMails"> Back </button>
+    </div>
     </section>
 
     `,
@@ -31,7 +33,7 @@ export default {
             .then(mail => {
                 this.mail = mail;
                 //console.log(this.mail);
-            })
+            })      
     },
     methods: {
         humanDate(timestamp) {
@@ -50,6 +52,10 @@ export default {
             }
             keepService.addNote(mail.body, newNote)
             
+        },
+
+        backToMails() {
+            this.$emit('backToMails', this.folder)
         }
     },
     data() {
