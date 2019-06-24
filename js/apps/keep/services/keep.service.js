@@ -16,6 +16,15 @@ function query() {
         bgc: 'white'
       },
       {
+        title: 'Photo',
+        id: utilService.makeId(),
+        type: 'img',
+        url: 'https://pl.scdn.co/images/pl/default/c9d50f0f80f52324b45bd2849a19b566119ddab5',
+        isPinned: false,
+        isOnEdit: false,
+        bgc: 'white'
+      },
+      {
         title: 'Ronaldo',
         id: utilService.makeId(),
         type: 'youtube',
@@ -26,13 +35,32 @@ function query() {
 
       },
       {
-        title: 'test',
+        title: 'Queen - Bohemian Rhapsody',
         id: utilService.makeId(),
-        type: 'text',
-        body: 'hello world',
+        type: 'youtube',
+        url: 'https://www.youtube.com/embed/fJ9rUzIMcZQ',
         isPinned: true,
         isOnEdit: false,
+        bgc: '#D5ECF5'
+
+      },
+      {
+        title: 'Lorem Ipsum',
+        id: utilService.makeId(),
+        type: 'text',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consequat sem in venenatis volutpat. In hac habitasse platea dictumst. Nam mollis est diam, in efficitur arcu consectetur ac. Aliquam eu consectetur felis. Donec ornare diam vitae augue posuere, quis consequat quam scelerisque. Mauris at eros massa. Nulla non eros nec ex pellentesque mattis. Nam egestas magna in varius interdum. Donec tincidunt feugiat ante quis fringilla. Integer id dolor finibus, consequat tellus nec, luctus nibh. Sed eros arcu, tempor vel massa eu, iaculis dignissim leo. ',
+        isPinned: false,
+        isOnEdit: false,
         bgc: 'yellow'
+      },
+      {
+        title: 'Funny Quote',
+        id: utilService.makeId(),
+        type: 'text',
+        body: 'Before you judge a man, walk a mile in his shoes. After that who cares?... He’s a mile away and you’ve got his shoes! — Billy Connolly',
+        isPinned: true,
+        isOnEdit: false,
+        bgc: '#9B89B3'
       },
 
       {
@@ -40,17 +68,17 @@ function query() {
         id: utilService.makeId(),
         type: 'todo',
         body: [{
-            todo: 'hello world',
+            todo: 'Learn Vue',
             isDone: false,
             id: utilService.makeId()
           },
           {
-            todo: 'hello world',
+            todo: 'Learn MySQL',
             isDone: false,
             id: utilService.makeId()
           },
           {
-            todo: 'hello world',
+            todo: 'Take an English Classes',
             isDone: false,
             id: utilService.makeId()
           }
@@ -139,7 +167,7 @@ function duplicateNote(id) {
 
 function addNote(input, data) {
   console.log(data);
-  
+
   data.id = utilService.makeId()
 
   if (data.type === 'text') {

@@ -10,7 +10,7 @@ export default {
   
             <div class="note-text" v-if="note.type==='text'">{{note.body}}</div>
             <img v-if="note.type==='img'" :src="note.url"/>
-            <iframe v-if="note.type==='youtube'" width="300" height="300"
+            <iframe v-if="note.type==='youtube'" width="100%" height="300"
             :src="note.url">
             </iframe>
             <ul v-if="note.type==='todo'">
@@ -82,8 +82,8 @@ export default {
                 .then(console.log('edited'))
         },
         changeColor(id) {
-            keepService.changeColor(id , this.newColor)
-            .then(console.log('color changed on page - show alert'))
+            keepService.changeColor(id, this.newColor)
+                .then(console.log('color changed on page - show alert'))
 
         }
 
@@ -92,7 +92,7 @@ export default {
     data() {
         return {
             newData: '',
-            newColor:''
+            newColor: ''
         }
     },
 
@@ -100,9 +100,11 @@ export default {
 
     computed: {
         test() {
-            
-                if(this.note.bgc) return {backgroundColor: this.note.bgc}
-        
+
+            if (this.note.bgc) return {
+                backgroundColor: this.note.bgc
+            }
+
         }
     },
 
