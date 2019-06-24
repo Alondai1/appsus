@@ -166,10 +166,7 @@ function duplicateNote(id) {
 }
 
 function addNote(input, data) {
-  console.log(data);
-
   data.id = utilService.makeId()
-
   if (data.type === 'text') {
     data.body = input
   } else if (data.type === 'img') {
@@ -177,8 +174,6 @@ function addNote(input, data) {
   } else if (data.type === 'youtube') {
     input = input.replace(/^http.*v=/gi, '')
     data.url = `https://www.youtube.com/embed/${input}`
-    console.log('clean youtube:', data.url);
-
   } else if (data.type === 'todo') {
     data.body = []
     let todos = input.split(',')
@@ -190,11 +185,9 @@ function addNote(input, data) {
       }
       data.body.push(todoBody)
     }
-    console.log('todo added', data);
   }
 
   notesDB.unshift(data)
-  console.log(notesDB);
   utilService.store(NOTES_KEY, notesDB)
 }
 

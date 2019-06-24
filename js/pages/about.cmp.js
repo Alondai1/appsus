@@ -11,17 +11,17 @@ export default {
     <div class="card">
         <img src="img/dima.png" alt="Avatar">
         <div class="container">
-            <h4><b>John Doe</b></h4> 
-            <h5>Architect & Engineer</h5> 
+            <h4><b>Dima Leshin</b></h4> 
+            <h5>Front-End Developer & Marketing</h5> 
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil vero ad, numquam maiores fuga di.
 </p> 
         </div>
     </div>
     <div class="card">
-        <img src="img/dima.png" alt="Avatar">
+        <img src="img/alon.png" alt="Avatar">
         <div class="container">
-            <h4><b>John Doe</b></h4> 
-            <h5>Architect & Engineer</h5> 
+            <h4><b>Alon Dai</b></h4> 
+            <h5>Front-End Developer & Designer</h5>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil vero ad, numquam maiores fuga di.
 </p> 
         </div>
