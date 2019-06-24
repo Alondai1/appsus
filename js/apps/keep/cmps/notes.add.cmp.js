@@ -47,6 +47,7 @@ export default {
                     timeout = setTimeout(() => {
                         this.showError = false;
                     }, 1500);
+                    return;
                 }
             }
             const note = {
