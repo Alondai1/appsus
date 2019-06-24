@@ -77,11 +77,21 @@ function togglePin(id) {
   return Promise.resolve()
 }
 
-function saveChanges(id, type, change) {
+function saveChanges(id, type, input) {
   const note = notesDB.find(note => note.id === id);
-  if (type === 'youtube' || type === 'img') note.url = change;
-  if (type === 'text') note.body = change;
-  console.log(note);
+  if (type === 'img') note.url = input;
+  if (type === 'text') note.body = input;
+  if (type === 'youtube') {
+    input = input.replace(/^http.*v=/gi, '')
+    note.url = `https://www.youtube.com/embed/${input}`
+  }
+  if (type === 'todo') {
+    let todos = input.split(',')
+    for (var i = 0; i < todos.length; i++) {
+      note.body[i].todo = todos[i]
+    }
+
+  }
 
   utilService.store(NOTES_KEY, notesDB)
   return Promise.resolve()
@@ -126,7 +136,6 @@ function addNote(input, data) {
   } else if (data.type === 'img') {
     data.url = input;
   } else if (data.type === 'youtube') {
-
     input = input.replace(/^http.*v=/gi, '')
     data.url = `https://www.youtube.com/embed/${input}`
     console.log('clean youtube:', data.url);
