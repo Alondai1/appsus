@@ -9,7 +9,7 @@ export default {
         </header>
 <div class="flex cards-container">
     <div class="card">
-        <img src="img/dima.png" alt="Avatar" style="width:100%">
+        <img src="img/dima.png" alt="Avatar">
         <div class="container">
             <h4><b>John Doe</b></h4> 
             <h5>Architect & Engineer</h5> 
@@ -18,7 +18,7 @@ export default {
         </div>
     </div>
     <div class="card">
-        <img src="img/dima.png" alt="Avatar" style="width:100%">
+        <img src="img/dima.png" alt="Avatar">
         <div class="container">
             <h4><b>John Doe</b></h4> 
             <h5>Architect & Engineer</h5> 
