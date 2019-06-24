@@ -10,7 +10,7 @@ export default {
     <section class="keep-container">
     <header class="keep-header"> 
             <img class="animated fadeIn delay-0.7s slow" src="img/keep.png"/>
-            <div class="keep-filter-section flex">
+            <div title="Search only on text filter" class="keep-filter-section flex">
             <ui-textbox
                 :disabled = filterOptions
                 floating-label

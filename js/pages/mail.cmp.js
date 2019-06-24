@@ -23,13 +23,13 @@ export default {
                 placeholder="Search"
                 v-model="filterBy.txt">
             </ui-textbox>
-<div class="mail-select-filter">
+
             <select v-model="filterBy.kind" class="mail-select-filter">
                 <option>All</option>
                 <option>Unread</option>
                 <option>Read</option>
             </select>
-</div>
+
             </div>
         </header>
 
