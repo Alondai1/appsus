@@ -31,7 +31,10 @@ export default {
             console.log('selected:', idx);
         },
         addNote() {
-            keepService.addNote(this.input, this.newNote)
+            const note = {
+                ...this.newNote
+            }
+            keepService.addNote(this.input, note)
             this.input = ''
             console.log('note added', this.input);
         },

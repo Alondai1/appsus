@@ -3,9 +3,13 @@ import menu from '../apps/cmps/menu-header.cmp.js'
 
 export default {
     template: `
-    <section class="about-container">
-    <menu-header></menu-header>
-        <h1>About Page</h1>
+    <section class="about-container flex">
+        <header>
+            <menu-header></menu-header> 
+        </header>
+
+	
+
     </section>
     `,
 
