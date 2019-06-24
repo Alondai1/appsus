@@ -5,9 +5,13 @@ export default {
     template: `
     <section class="keep-add-note flex">
         <div class="keep-input flex">
-            <input :type="fieldType" v-model="input" :placeholder="placeholder" @keyup.enter="addNote" />
-            <div v-for="(noteType, idx) in noteTypes" @click="selectType(idx)" class="keep-input-icon">
-                <i :class="noteType.icon"></i>
+            <div class="keep-input-field">
+                <input :type="fieldType" v-model="input" :placeholder="placeholder" @keyup.enter="addNote" />
+            </div>
+            <div class="keep-icons flex">
+                <div v-for="(noteType, idx) in noteTypes" @click="selectType(idx)" class="keep-input-icon">
+                    <i :class="noteType.icon"></i>
+                </div>
             </div>
         </div>
     </section>
