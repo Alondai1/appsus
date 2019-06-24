@@ -21,6 +21,7 @@ export default {
             </ui-textbox>
             <select v-model="filterByType">
                 <option value="" disabled>Select Filter</option>
+                <option value="all">All</option>
                 <option value="text">Text</option>
                 <option value="youtube">Videos</option>
                 <option value="img">Images</option>
@@ -37,7 +38,7 @@ export default {
         </div>
     </header>
     <img v-if="showLoader" class="keep-loader" src="img/loader.svg"/>
-<note-add :noteTypes="noteTypes" v-if="!showLoader"></note-add>
+    <note-add :noteTypes="noteTypes" v-if="!showLoader"></note-add>
     <note-list :filterBy="filterBy" :filterByType="filterByType" :notes="notesDB" ></note-list>
     </section>
     `,
