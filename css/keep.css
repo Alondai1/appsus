@@ -99,40 +99,59 @@ hr {
 /* ..............................KEEP HEADER............................... */
 
 .keep-header {
-    justify-content: center;
+
+    justify-content: space-between;
     border-bottom: 1px solid #A0ACBD;
     height: 100px;
     background-color: #0288D1;
     font-size: 2.8rem;
 }
 
-.keep-header img {
-    position: absolute;
+.keep-logo {
+    width: 10rem;
+    position: relative;
+}
+
+.keep-logo img {
     height: 74px;
-    top: 2%;
-    left: 2%;
     width: 104px;
 }
 
-.keep-header .ui-textbox__label {
+/* .keep-header .ui-textbox__label {
     width: 30%;
-}
+} */
 
 .keep-header .ui-textbox__content {
-    display: flex;
-    justify-content: center;
+    /* display: flex; */
+    /* justify-content: center; */
     /* margin-top: 20px; */
 }
 
-.keep-header .ui-textbox__textarea {
+/* .keep-header .ui-textbox__textarea {
     color: white;
-}
+} */
 
-.ui-select__label {
-    width: 14%;
+/* .ui-select__label {
+    width: 50%;
     margin: -35px auto;
-}
+} */
 
 .keep-filter-section {
-     flex-direction: column;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    flex-direction: row;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.keep-filter-section .ui-select {
+    margin-bottom: 0;
+    margin-right: 2rem;
+}
+
+.keep-filter-section .ui-textbox {
+    margin-bottom: 0;
+    margin-left: 2rem;
 }

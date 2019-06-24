@@ -8,26 +8,26 @@ import noteAdd from '../apps/keep/cmps/notes.add.cmp.js'
 export default {
     template: `
     <section class="keep-container">
-    <header class="keep-header"> 
+    <header class="keep-header flex">
+        <div class="keep-logo">
             <img class="animated fadeIn delay-0.7s slow" src="img/keep.png"/>
-            <div class="keep-filter-section flex">
+        </div>
+        <div class="keep-filter-section flex">
             <ui-textbox
                 :disabled = filterOptions
                 floating-label
-                label="Search"
                 placeholder="Search"
                 v-model="filterBy">
             </ui-textbox>
             <ui-select
-                label="Filter"
                 placeholder="Select Filter"
                 :options="['','text','youtube','todo', 'img']"
                 v-model="filterByType">
-            </ui-select>
-
-            
-            </div>
-    <menu-header></menu-header>
+            </ui-select>            
+        </div>
+        <div>
+            <menu-header></menu-header>
+        </div>
     </header>
     <img v-if="showLoader" class="keep-loader" src="img/loader.svg"/>
 <note-add :noteTypes="noteTypes" v-if="!showLoader"></note-add>
@@ -48,7 +48,7 @@ export default {
 
     computed: {
         filterOptions() {
-            if(this.filterByType==='text') return false;
+            if (this.filterByType === 'text') return false;
             return true;
         }
     },
@@ -58,7 +58,7 @@ export default {
             showLoader: false,
             notesDB: [],
             filterBy: '',
-            filterByType:'',
+            filterByType: '',
             noteTypes: {
                 text: {
                     field: 'text',
