@@ -155,6 +155,10 @@
 
 .mail-header .ui-textbox__label {
     width: 30%;
+    background-color: white;
+    border-radius: 3px;
+    opacity: 0.8;
+    padding: 0 10px 3px;
 }
 
 .mail-header .ui-textbox__content {

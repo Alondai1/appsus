@@ -23,19 +23,20 @@ export default {
                 placeholder="Search"
                 v-model="filterBy.txt">
             </ui-textbox>
-
+<div class="mail-select-filter">
             <select v-model="filterBy.kind" class="mail-select-filter">
                 <option>All</option>
                 <option>Unread</option>
                 <option>Read</option>
             </select>
+</div>
             </div>
         </header>
 
         <section class="mail-app-container flex">
             <mail-bar @compose="composeMail" @setFolder="showFolder" :mails="mailsDB"></mail-bar>
             <img v-if="showLoader" src="img/loader.svg" class="mail-loading-img">
-            <list-mail :mails="mailsToShow" :folder="folder" v-if="showList"></list-mail>
+            <list-mail :loader="showLoader" :mails="mailsToShow" :folder="folder" v-if="showList"></list-mail>
             <full-mail v-if="showFullMail" :mailid="mailId"></full-mail>
         </section>
         <mail-form @delete-form="deleteForm" v-if="showComposeForm" @email-sent="emailSent"></mail-form>
