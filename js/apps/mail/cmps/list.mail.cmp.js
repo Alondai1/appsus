@@ -23,7 +23,7 @@ export default {
             </div>
         </li>
     </ul>
-    <div v-if="!mails.length"> No Mails To Show</div>
+    <div v-if="!mails.length && !loader"> No Mails To Show</div>
 
 </section>
 
@@ -34,7 +34,7 @@ export default {
         }
     },
 
-    props: ['mails', 'folder'],
+    props: ['mails', 'folder','loader'],
 
     methods: {
         deleteMail(id) {
