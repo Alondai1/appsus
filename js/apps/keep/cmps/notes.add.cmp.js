@@ -15,7 +15,7 @@ export default {
                 </div>
             </div>
         </div>
-        <span v-if="showError">Please, enter a valid URL</span>
+        <div v-if="showError" class="error-msg">Please, enter a valid URL</div>
     </section>
     `,
     data() {
@@ -46,7 +46,9 @@ export default {
                     this.showError = true;
                     timeout = setTimeout(() => {
                         this.showError = false;
-                    }, 1500);
+                    }, 1000);
+                    this.input = ''
+                    return;
                 }
             }
             const note = {

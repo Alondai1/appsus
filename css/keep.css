@@ -10,7 +10,8 @@
     break-inside: avoid-column;
 }
 
-.ui-focus-container , .ui-modal__container {
+.ui-focus-container,
+.ui-modal__container {
     max-width: 26vw;
 }
 
@@ -20,8 +21,20 @@
 
 
 .keep-add-note {
+    position: relative;
     margin: 20px 90px 20px 120px;
     justify-content: center;
+}
+
+.keep-add-note .error-msg {
+    margin-top: 15px;
+    position: absolute;
+    background-color: #fff;
+    max-width: 580px;
+    height: 30px;
+    text-align: center;
+    color: red;
+    vertical-align: center;
 }
 
 .keep-input {
@@ -214,7 +227,8 @@ hr {
 
 @media (max-width: 580px) {
 
-    .ui-focus-container , .ui-modal__container {
+    .ui-focus-container,
+    .ui-modal__container {
         max-width: 68vw;
     }
 
