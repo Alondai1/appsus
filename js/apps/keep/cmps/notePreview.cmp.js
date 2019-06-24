@@ -5,7 +5,7 @@ export default {
 
     template: `
 
-<section class="note-item">
+<section :style="test" class="note-item">
   <h1>{{note.title}}</h1>
   
             <div class="note-text" v-if="note.type==='text'">{{note.body}}</div>
@@ -92,7 +92,12 @@ export default {
     props: ['note'],
 
     computed: {
-
+        test() {
+            return {
+                color: 'white',
+                backgroundColor: 'blue'
+            }
+        }
     },
 
 }

@@ -174,14 +174,31 @@
 }
 
 .mail-filter-section {
-    flex-direction: column;
+    max-width: 600px;
+    flex-grow: 1;
+    justify-content: center;
+    margin-bottom: 35px;
+    margin-top: 10px;
+    flex-direction: row;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 5px;
 }
 
 .mail-select-filter {
-    width: 6%;
-    position: absolute;
-    left: 56%;
-    top: 9%;
+    padding-bottom: 6px;
+    margin-right: 20px;
+    margin-top: 7px;
+    margin-bottom: 0;
+    cursor: pointer;
+    -webkit-appearance: none;
+    border: 0;
+    border-radius: 0;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 1rem;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica, Arial, sans-serif;
+    color: rgba(0, 0, 0, .60);
 }
 
 /* ----------------------------------------------Mail-Items--------------------------------------------
@@ -235,7 +252,8 @@
     cursor: pointer;
 }
 
-.mail-list, .mail-full {
+.mail-list,
+.mail-full {
     flex: 1;
     padding: 0 0 0 17px;
 }
@@ -248,9 +266,11 @@
         flex-direction: column;
         height: 100px;
     }
+
     .mail-item div:nth-child(1) {
         width: 100%;
     }
+
     .mail-item div:nth-child(2) {
         width: 100%;
         margin-right: 0px;
@@ -258,6 +278,7 @@
         overflow: hidden;
         white-space: nowrap;
     }
+
     .mail-item div:nth-child(3) {
         margin-right: 0px;
         width: 100%;
@@ -265,6 +286,7 @@
         overflow: hidden;
         white-space: nowrap;
     }
+
     .mail-item div:nth-child(4) {
         width: 200px;
         margin-right: 0;
@@ -280,6 +302,7 @@
     .mail-bar {
         display: none;
     }
+
     .mail-compose {
         position: fixed;
         bottom: 3%;
@@ -287,45 +310,56 @@
         border-radius: 147px;
         width: 44px;
     }
+
     .mail-compose span {
         display: none;
     }
+
     .mail-select-filter {
         width: 12%;
     }
+
     .mail-list {
         padding: 0;
     }
+
     .mail-list ul {
         margin: 0;
         padding: 0;
         padding-left: 3%;
     }
+
     .mail-item {
         text-align: center;
         height: 120px;
         padding: 0;
     }
+
     .mail-item * {
         margin-right: 0;
     }
+
     .mail-header .logo {
         display: none;
     }
+
     .mail-header .hamburger {
         display: block;
         position: absolute;
         top: 3%;
         left: 3%;
     }
+
     .mail-select-filter {
         left: 45%;
         top: 12%;
     }
+
     .mail-form {
         width: 95%;
         height: 80%;
     }
+
     .mail-bar {
         position: absolute;
         background: #fefefe;
@@ -334,9 +368,10 @@
         height: 300px;
     }
 
-    .mail-bar ul *{
+    .mail-bar ul * {
         margin: 10px 0 10px 0;
     }
+
     .mail-loading-img {
         left: 24%;
     }
