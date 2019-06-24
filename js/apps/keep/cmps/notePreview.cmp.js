@@ -35,10 +35,10 @@ export default {
                 </div>
 
                 <div v-if="note.isOnEdit" class="edit-section"> 
-                    <textarea v-model="newData" v-if="note.type==='img'">{{note.url}}</textarea>
-                    <textarea v-model="newData" v-if="note.type==='youtube'">{{note.url}}</textarea>
-                    <textarea v-model="newData" v-if="note.type==='todo'">{{note.body}}</textarea>
-                    <textarea v-model="newData" v-if="note.type==='text'">{{note.body}}</textarea>
+                    <input placeholder="Photo url" v-model="newData" v-if="note.type==='img'">
+                    <input placeholder="Video url" v-model="newData" v-if="note.type==='youtube'">
+                    <input v-model="newData" v-if="note.type==='todo'">
+                    <input :placeholder="note.body" v-model="newData" v-if="note.type==='text'"/>
                     <button  @click.stop="saveChanges(note.id , note.type)">save</button>
                 </div>
 

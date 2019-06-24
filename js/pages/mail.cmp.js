@@ -13,7 +13,9 @@ export default {
     <section class="mail-container">
         <header class="mail-header"> 
             <menu-header></menu-header>
-                <i class="hamburger fas fa-bars"></i>
+        <span  @click="toggleHamburger">
+        <i class="hamburger fas fa-bars"></i>
+        </span> 
             <img class="logo animated fadeIn delay-0.7s slow" src="img/gmail-icon.png"/>
             <div class="mail-filter-section flex">
             <ui-textbox
@@ -23,13 +25,13 @@ export default {
                 placeholder="Search"
                 v-model="filterBy.txt">
             </ui-textbox>
-<div class="mail-select-filter">
+
             <select v-model="filterBy.kind" class="mail-select-filter">
                 <option>All</option>
                 <option>Unread</option>
                 <option>Read</option>
             </select>
-</div>
+
             </div>
         </header>
 
@@ -68,6 +70,9 @@ export default {
             this.showComposeForm = false;
 
         },
+        toggleHamburger() {
+            mailService.toggleHamburger()
+        }
 
     },
 

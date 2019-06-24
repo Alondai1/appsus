@@ -2,6 +2,8 @@
     flex-grow: 1;
 }
 
+
+
 .mail-header .hamburger {
     display: none;
 }
@@ -28,7 +30,10 @@
 
 /* -----------MAIL BAR------------------------------------------------- */
 
-.mail-loading-img {}
+.mail-loading-img {
+   position: absolute;
+   left: 43%;
+}
 
 .mail-bar {
     width: 150px;
@@ -84,13 +89,12 @@
 .mail-form {
     z-index: 10;
     background-color: #fff;
-    position: absolute;
+    position: fixed;
     bottom: 3px;
     right: 10px;
     padding-bottom: 10px;
     box-shadow: 0 0 2px 0 rgba(102, 102, 102, 1);
     width: 60vw;
-    height: 60vh;
 }
 
 .mail-form form {
@@ -176,9 +180,9 @@
 }
 
 .mail-select-filter {
-    width: 5%;
+    width: 6%;
     position: absolute;
-    left: 50%;
+    left: 56%;
     top: 9%;
 }
 
@@ -235,6 +239,7 @@
 
 .mail-list, .mail-full {
     flex: 1;
+    padding: 0 0 0 17px;
 }
 
 @media (max-width: 950px) {
@@ -250,13 +255,13 @@
     }
     .mail-item div:nth-child(2) {
         width: 100%;
-        margin-right: 10px;
+        margin-right: 0px;
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
     }
     .mail-item div:nth-child(3) {
-        margin-right: 10px;
+        margin-right: 0px;
         width: 100%;
         text-overflow: ellipsis;
         overflow: hidden;
@@ -264,7 +269,7 @@
     }
     .mail-item div:nth-child(4) {
         width: 200px;
-        margin-right: 10px;
+        margin-right: 0;
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
@@ -287,29 +292,53 @@
     .mail-compose span {
         display: none;
     }
-
     .mail-select-filter {
         width: 12%;
     }
 
+    .mail-list {
+        padding: 0;
+    }
     .mail-list ul {
+        margin: 0;
+        padding: 0;
         padding-left: 3%;
     }
-
     .mail-item {
         text-align: center;
         height: 120px;
+        padding: 0;
+    }
+
+    .mail-item * {
+margin-right: 0;
     }
 
     .mail-header .logo {
-        display: none; 
+        display: none;
     }
-
     .mail-header .hamburger {
         display: block;
         position: absolute;
         top: 3%;
         left: 3%;
     }
-    
+    .mail-select-filter {
+        left: 45%;
+        top: 12%;
+    }
+    .mail-form {
+        width: 95%;
+        height: 80%;
+    }
+    .mail-bar {
+        position: absolute;
+        background: #fefefe;
+        margin: 0;
+        top: 104px;
+    }
+
+    .mail-loading-img {
+        left: 24%;
+     }
 }
