@@ -19,13 +19,20 @@ export default {
                 placeholder="Search"
                 v-model="filterBy">
             </ui-textbox>
-            <ui-select
+            <select v-model="filterByType">
+                <option value="" disabled>Select Filter</option>
+                <option value="text">Text</option>
+                <option value="youtube">Videos</option>
+                <option value="img">Images</option>
+                <option value="todo">Todo</option>
+            </select>
+            <!-- <ui-select
                 placeholder="Select Filter"
                 :options="['','text','youtube','todo', 'img']"
                 v-model="filterByType">
-            </ui-select>            
+            </ui-select>             -->
         </div>
-        <div>
+        <div class="keep-menu">
             <menu-header></menu-header>
         </div>
     </header>
