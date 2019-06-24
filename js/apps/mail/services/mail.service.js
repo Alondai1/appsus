@@ -388,6 +388,12 @@ function getNumEmailReads() {
   return Promise.resolve(count);
 }
 
+function toggleHamburger () {
+  let menuEl =  document.querySelector(".mail-bar")
+  if (menuEl.style.display==='block') menuEl.style.display='none'
+  else menuEl.style.display='block'
+}
+
 
 export default {
   query,
@@ -397,4 +403,5 @@ export default {
   restoreMail,
   getMailById,
   getNumEmailReads,
+  toggleHamburger
 }

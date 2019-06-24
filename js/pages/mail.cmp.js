@@ -13,7 +13,9 @@ export default {
     <section class="mail-container">
         <header class="mail-header"> 
             <menu-header></menu-header>
-                <i class="hamburger fas fa-bars"></i>
+        <span  @click="toggleHamburger">
+        <i class="hamburger fas fa-bars"></i>
+        </span> 
             <img class="logo animated fadeIn delay-0.7s slow" src="img/gmail-icon.png"/>
             <div class="mail-filter-section flex">
             <ui-textbox
@@ -68,6 +70,9 @@ export default {
             this.showComposeForm = false;
 
         },
+        toggleHamburger() {
+            mailService.toggleHamburger()
+        }
 
     },
 
