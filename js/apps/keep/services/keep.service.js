@@ -7,6 +7,15 @@ function query() {
   let notes = utilService.load(NOTES_KEY);
   if (!notes) {
     notes = [{
+        title: 'Funny Meme',
+        id: utilService.makeId(),
+        type: 'img',
+        url: 'https://www.probytes.net/wp-content/uploads/2018/01/4-1.png',
+        isPinned: true,
+        isOnEdit: false,
+        bgc: '#C3F9FF'
+      },
+      {
         title: 'myPhoto',
         id: utilService.makeId(),
         type: 'img',
@@ -23,6 +32,15 @@ function query() {
         isPinned: false,
         isOnEdit: false,
         bgc: 'white'
+      },
+      {
+        title: 'Funny Quote',
+        id: utilService.makeId(),
+        type: 'text',
+        body: 'Before you judge a man, walk a mile in his shoes. After that who cares?... He’s a mile away and you’ve got his shoes! — Billy Connolly',
+        isPinned: true,
+        isOnEdit: false,
+        bgc: '#9B89B3'
       },
       {
         title: 'Ronaldo',
@@ -53,16 +71,6 @@ function query() {
         isOnEdit: false,
         bgc: 'yellow'
       },
-      {
-        title: 'Funny Quote',
-        id: utilService.makeId(),
-        type: 'text',
-        body: 'Before you judge a man, walk a mile in his shoes. After that who cares?... He’s a mile away and you’ve got his shoes! — Billy Connolly',
-        isPinned: true,
-        isOnEdit: false,
-        bgc: '#9B89B3'
-      },
-
       {
         title: 'My todos',
         id: utilService.makeId(),

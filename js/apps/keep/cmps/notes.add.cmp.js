@@ -1,5 +1,6 @@
 import keepService from '../services/keep.service.js'
 
+let timeout;
 export default {
     props: ['noteTypes'],
     template: `
@@ -14,10 +15,13 @@ export default {
                 </div>
             </div>
         </div>
+        <span v-if="showError">Please, enter a valid URL</span>
     </section>
     `,
     data() {
         return {
+
+            showError: false,
             newNote: {
                 id: '',
                 type: 'text',
@@ -36,6 +40,15 @@ export default {
             console.log('selected:', idx);
         },
         addNote() {
+            if (this.newNote.type === 'img' ||
+                this.newNote.type === 'youtube') {
+                if (!this.input.includes('http')) {
+                    this.showError = true;
+                    timeout = setTimeout(() => {
+                        this.showError = false;
+                    }, 1500);
+                }
+            }
             const note = {
                 ...this.newNote
             }
@@ -51,5 +64,8 @@ export default {
         fieldType() {
             return this.noteTypes[this.newNote.type].field
         },
+    },
+    destroyed() {
+        clearTimeout(timeout)
     },
 }
