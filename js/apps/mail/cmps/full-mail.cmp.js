@@ -21,9 +21,9 @@ export default {
     </p>
 
     <div class="btns-container">    
+        <button class="back-btn" @click="backToMails"> Back </button>
     <button @click.stop ="mailToForm(mail)" class="save-email-btn">Save As A Note</button>
     <span class="saved-popup animated bounceIn" v-if="savedPopupModal"> Mail saved as a note</span>
-    <button class="back-btn" @click="backToMails"> Back </button>
     </div>
     </section>
 
