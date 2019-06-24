@@ -7,54 +7,57 @@ function query() {
   let notes = utilService.load(NOTES_KEY);
   if (!notes) {
     notes = [{
-        title: 'myPhoto',
-        id: utilService.makeId(),
-        type: 'img',
-        url: 'https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png',
-        isPinned: true,
-        isOnEdit: false
-      },
-      {
-        title: 'Ronaldo',
-        id: utilService.makeId(),
-        type: 'youtube',
-        url: 'https://www.youtube.com/embed/9LoLCBjkgno',
-        isPinned: false,
-        isOnEdit: false
+      title: 'myPhoto',
+      id: utilService.makeId(),
+      type: 'img',
+      url: 'https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png',
+      isPinned: true,
+      isOnEdit: false,
+      bgc: 'red'
+    },
+    {
+      title: 'Ronaldo',
+      id: utilService.makeId(),
+      type: 'youtube',
+      url: 'https://www.youtube.com/embed/9LoLCBjkgno',
+      isPinned: false,
+      isOnEdit: false,
+      bgc: 'blue'
 
-      },
-      {
-        title: 'test',
-        id: utilService.makeId(),
-        type: 'text',
-        body: 'hello world',
-        isPinned: true,
-        isOnEdit: false
-      },
+    },
+    {
+      title: 'test',
+      id: utilService.makeId(),
+      type: 'text',
+      body: 'hello world',
+      isPinned: true,
+      isOnEdit: false,
+      bgc: 'yellow'
+    },
 
-      {
-        title: 'My todos',
-        id: utilService.makeId(),
-        type: 'todo',
-        body: [{
-            todo: 'hello world',
-            isDone: false,
-            id: utilService.makeId()
-          },
-          {
-            todo: 'hello world',
-            isDone: false,
-            id: utilService.makeId()
-          },
-          {
-            todo: 'hello world',
-            isDone: false,
-            id: utilService.makeId()
-          }
-        ],
-        isPinned: true,
-        isOnEdit: false
+    {
+      title: 'My todos',
+      id: utilService.makeId(),
+      type: 'todo',
+      body: [{
+        todo: 'hello world',
+        isDone: false,
+        id: utilService.makeId()
       },
+      {
+        todo: 'hello world',
+        isDone: false,
+        id: utilService.makeId()
+      },
+      {
+        todo: 'hello world',
+        isDone: false,
+        id: utilService.makeId()
+      }
+      ],
+      isPinned: true,
+      isOnEdit: false
+    },
 
     ];
   }
@@ -77,10 +80,17 @@ function togglePin(id) {
   return Promise.resolve()
 }
 
-function saveChanges(id, type, change) {
+function changeColor(id, color) {
   const note = notesDB.find(note => note.id === id);
-  if (type === 'youtube' || type === 'img') note.url = change;
-  if (type === 'text') note.body = change;
+  note.bgc = color;
+  utilService.store(NOTES_KEY, notesDB)
+  return Promise.resolve()
+}
+
+function saveChanges(id, type, input) {
+  const note = notesDB.find(note => note.id === id);
+  if (type === 'youtube' || type === 'img') note.url = input;
+  if (type === 'text') note.body = input;
   console.log(note);
 
   utilService.store(NOTES_KEY, notesDB)
@@ -159,5 +169,6 @@ export default {
   toggleTodo,
   toggleEdit,
   saveChanges,
-  addNote
+  addNote,
+  changeColor
 }
