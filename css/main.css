@@ -7,6 +7,9 @@
 .about-container {
     flex-direction: column;
     flex: 1;
+    background-image: url('../img/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .about-container header {
