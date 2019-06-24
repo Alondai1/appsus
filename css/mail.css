@@ -2,8 +2,6 @@
     flex-grow: 1;
 }
 
-
-
 .mail-header .hamburger {
     display: none;
 }
@@ -31,8 +29,8 @@
 /* -----------MAIL BAR------------------------------------------------- */
 
 .mail-loading-img {
-   position: absolute;
-   left: 43%;
+    position: absolute;
+    left: 43%;
 }
 
 .mail-bar {
@@ -295,7 +293,6 @@
     .mail-select-filter {
         width: 12%;
     }
-
     .mail-list {
         padding: 0;
     }
@@ -309,11 +306,9 @@
         height: 120px;
         padding: 0;
     }
-
     .mail-item * {
-margin-right: 0;
+        margin-right: 0;
     }
-
     .mail-header .logo {
         display: none;
     }
@@ -336,9 +331,13 @@ margin-right: 0;
         background: #fefefe;
         margin: 0;
         top: 104px;
+        height: 300px;
     }
 
+    .mail-bar ul *{
+        margin: 10px 0 10px 0;
+    }
     .mail-loading-img {
         left: 24%;
-     }
+    }
 }

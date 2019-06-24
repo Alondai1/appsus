@@ -126,7 +126,7 @@ export default {
             } else if (this.folder === 'trash') {
                 return this.tempDB.filter(mail => (mail.isDeleted))
             } else if (this.folder === 'sent') {
-                return this.tempDB.filter(mail => (mail.isSent))
+                return this.tempDB.filter(mail => (mail.isSent) && (!mail.isDeleted) )
             } else if (this.folder === 'inbox') {
                 return this.tempDB.filter(mail => (!mail.isDeleted))
             } else return this.tempDB.filter(mail => (!mail.isDeleted))

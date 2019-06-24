@@ -19,7 +19,7 @@ export default {
     `,
     created() {
         eventBus.$on('mail-is-read', (ev) => {
-                console.log(ev);
+
                 mailService.getNumEmailReads()
                     .then(count => {
                         this.read = count
@@ -68,9 +68,7 @@ export default {
                 this.trashIsActive = true;
             }
         },
-
         progress() {
-            console.log('computed', this.read);
             return (this.read / this.mails.length) * 100
         }
     },
