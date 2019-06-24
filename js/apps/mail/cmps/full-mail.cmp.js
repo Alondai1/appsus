@@ -1,4 +1,5 @@
 import eventBus from '../../../event-bus.js'
+import keepService from '../../keep/services/keep.service.js'
 import mailService from '../services/mail.service.js'
 import utilsService from '../../../services/utils.service.js';
 
@@ -18,6 +19,10 @@ export default {
     <p>
     {{humanDate(mail.sendAt)}}
     </p>
+
+    
+    <button @click.stop ="mailToForm(mail)" class="save-email-btn">Save As A Note</button>
+    <span class="saved-popup animated bounceIn" v-if="savedPopupModal"> Mail saved as a note</span>
     </section>
 
     `,
@@ -32,10 +37,30 @@ export default {
         humanDate(timestamp) {
             return utilsService.getHumanHours(timestamp)
         },
+
+        mailToForm(mail) {
+            this.savedPopupModal=true;
+           this.timeOut = setTimeout (()=>this.savedPopupModal=false , 3000)
+            let newNote = {
+                id: '',
+                type: 'text',
+                isPinned: false,
+                isOnEdit: false,
+                bgc: 'white'
+            }
+            keepService.addNote(mail.body, newNote)
+            
+        }
     },
     data() {
         return {
             mail: null,
+            savedPopupModal: false,
+            timeOut:null
         }
+    },
+
+    destroyed() {
+        clearTimeout(this.timeOut)
     },
 }

@@ -13,7 +13,7 @@ function query() {
         url: 'https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png',
         isPinned: true,
         isOnEdit: false,
-        bgc: 'red'
+        bgc: 'white'
       },
       {
         title: 'Ronaldo',
@@ -56,7 +56,8 @@ function query() {
           }
         ],
         isPinned: true,
-        isOnEdit: false
+        isOnEdit: false,
+        bgc: 'green'
       },
 
     ];
@@ -118,7 +119,6 @@ function toggleEdit(id) {
   const note = notesDB.find(note => note.id === id);
   note.isOnEdit = !note.isOnEdit;
   utilService.store(NOTES_KEY, notesDB)
-  console.log(note.isOnEdit);
 
   return Promise.resolve()
 }
@@ -138,6 +138,8 @@ function duplicateNote(id) {
 }
 
 function addNote(input, data) {
+  console.log(data);
+  
   data.id = utilService.makeId()
 
   if (data.type === 'text') {
