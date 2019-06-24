@@ -11,28 +11,29 @@ import eventBus from '../event-bus.js'
 export default {
     template: `
     <section class="mail-container">
-        <header class="mail-header"> 
-            <menu-header></menu-header>
-        <span  @click="toggleHamburger">
-        <i class="hamburger fas fa-bars"></i>
-        </span> 
+        <header class="mail-header flex">
+        <div class="mail-logo">
             <img class="logo animated fadeIn delay-0.7s slow" src="img/gmail-icon.png"/>
+        </div>
             <div class="mail-filter-section flex">
-            <ui-textbox
-                color="green"
-                floating-label
-                label="Search"
-                placeholder="Search"
-                v-model="filterBy.txt">
-            </ui-textbox>
-
-            <select v-model="filterBy.kind" class="mail-select-filter">
-                <option>All</option>
-                <option>Unread</option>
-                <option>Read</option>
-            </select>
-
+                <ui-textbox
+                    color="green"
+                    floating-label
+                    placeholder="Search"
+                    v-model="filterBy.txt">
+                </ui-textbox>
+                <select v-model="filterBy.kind">
+                    <option>All</option>
+                    <option>Unread</option>
+                    <option>Read</option>
+                </select>
             </div>
+            <div class="keep-menu">
+                <menu-header></menu-header>
+            </div>
+            <span  @click="toggleHamburger">
+        <i class="hamburger fas fa-bars"></i>
+        </span>
         </header>
 
         <section class="mail-app-container flex">
@@ -126,7 +127,7 @@ export default {
             } else if (this.folder === 'trash') {
                 return this.tempDB.filter(mail => (mail.isDeleted))
             } else if (this.folder === 'sent') {
-                return this.tempDB.filter(mail => (mail.isSent) && (!mail.isDeleted) )
+                return this.tempDB.filter(mail => (mail.isSent) && (!mail.isDeleted))
             } else if (this.folder === 'inbox') {
                 return this.tempDB.filter(mail => (!mail.isDeleted))
             } else return this.tempDB.filter(mail => (!mail.isDeleted))

@@ -27,6 +27,7 @@
 
 .keep-input input {
     font-size: 20px;
+    width: 100%;
     border: 0;
     margin-right: 10px;
     outline: 0;
@@ -73,11 +74,11 @@
     flex-direction: column;
     justify-content: space-between;
     background-color: white;
-    box-shadow: 5px 5px 5px #888888;
+    box-shadow: 3px 3px 3px #888888;
 }
 
 .keep-loader {
-    justify-content: center;
+    text-align: center;
 }
 
 .pinned {

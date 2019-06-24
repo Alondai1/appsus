@@ -27,17 +27,14 @@ export default {
                 <option value="img">Images</option>
                 <option value="todo">Todo</option>
             </select>
-            <!-- <ui-select
-                placeholder="Select Filter"
-                :options="['','text','youtube','todo', 'img']"
-                v-model="filterByType">
-            </ui-select>             -->
         </div>
         <div class="keep-menu">
             <menu-header></menu-header>
         </div>
     </header>
-    <img v-if="showLoader" class="keep-loader" src="img/loader.svg"/>
+    <div class="keep-loader">
+        <img v-if="showLoader" src="img/loader.svg"/>
+    </div>
     <note-add :noteTypes="noteTypes" v-if="!showLoader"></note-add>
     <note-list :filterBy="filterBy" :filterByType="filterByType" :notes="notesDB" ></note-list>
     </section>
