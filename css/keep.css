@@ -10,6 +10,10 @@
     break-inside: avoid-column;
 }
 
+.ui-focus-container , .ui-modal__container {
+    max-width: 26vw;
+}
+
 .note-item {
     break-inside: avoid-column;
 }
@@ -210,6 +214,9 @@ hr {
 
 @media (max-width: 580px) {
 
+    .ui-focus-container , .ui-modal__container {
+        max-width: 68vw;
+    }
 
     .keep-filter-section {
         padding-left: 10px;
