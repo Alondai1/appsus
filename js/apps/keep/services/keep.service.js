@@ -7,57 +7,57 @@ function query() {
   let notes = utilService.load(NOTES_KEY);
   if (!notes) {
     notes = [{
-      title: 'myPhoto',
-      id: utilService.makeId(),
-      type: 'img',
-      url: 'https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png',
-      isPinned: true,
-      isOnEdit: false,
-      bgc: ''
-    },
-    {
-      title: 'Ronaldo',
-      id: utilService.makeId(),
-      type: 'youtube',
-      url: 'https://www.youtube.com/embed/9LoLCBjkgno',
-      isPinned: false,
-      isOnEdit: false,
-      bgc: ''
-
-    },
-    {
-      title: 'test',
-      id: utilService.makeId(),
-      type: 'text',
-      body: 'hello world',
-      isPinned: true,
-      isOnEdit: false,
-      bgc: ''
-    },
-
-    {
-      title: 'My todos',
-      id: utilService.makeId(),
-      type: 'todo',
-      body: [{
-        todo: 'hello world',
-        isDone: false,
-        id: utilService.makeId()
+        title: 'myPhoto',
+        id: utilService.makeId(),
+        type: 'img',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png',
+        isPinned: true,
+        isOnEdit: false,
+        bgc: 'red'
       },
       {
-        todo: 'hello world',
-        isDone: false,
-        id: utilService.makeId()
+        title: 'Ronaldo',
+        id: utilService.makeId(),
+        type: 'youtube',
+        url: 'https://www.youtube.com/embed/9LoLCBjkgno',
+        isPinned: false,
+        isOnEdit: false,
+        bgc: 'blue'
+
       },
       {
-        todo: 'hello world',
-        isDone: false,
-        id: utilService.makeId()
-      }
-      ],
-      isPinned: true,
-      isOnEdit: false
-    },
+        title: 'test',
+        id: utilService.makeId(),
+        type: 'text',
+        body: 'hello world',
+        isPinned: true,
+        isOnEdit: false,
+        bgc: 'yellow'
+      },
+
+      {
+        title: 'My todos',
+        id: utilService.makeId(),
+        type: 'todo',
+        body: [{
+            todo: 'hello world',
+            isDone: false,
+            id: utilService.makeId()
+          },
+          {
+            todo: 'hello world',
+            isDone: false,
+            id: utilService.makeId()
+          },
+          {
+            todo: 'hello world',
+            isDone: false,
+            id: utilService.makeId()
+          }
+        ],
+        isPinned: true,
+        isOnEdit: false
+      },
 
     ];
   }
@@ -89,9 +89,18 @@ function changeColor(id, color) {
 
 function saveChanges(id, type, input) {
   const note = notesDB.find(note => note.id === id);
-  if (type === 'youtube' || type === 'img') note.url = input;
+  if (type === 'img') note.url = input;
   if (type === 'text') note.body = input;
-  console.log(note);
+  if (type === 'youtube') {
+    input = input.replace(/^http.*v=/gi, '')
+    note.url = `https://www.youtube.com/embed/${input}`
+  }
+  if (type === 'todo') {
+    let todos = input.split(',')
+    for (var i = 0; i < todos.length; i++) {
+      note.body[i].todo = todos[i]
+    }
+  }
 
   utilService.store(NOTES_KEY, notesDB)
   return Promise.resolve()
@@ -136,7 +145,6 @@ function addNote(input, data) {
   } else if (data.type === 'img') {
     data.url = input;
   } else if (data.type === 'youtube') {
-
     input = input.replace(/^http.*v=/gi, '')
     data.url = `https://www.youtube.com/embed/${input}`
     console.log('clean youtube:', data.url);
