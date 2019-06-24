@@ -31,9 +31,9 @@ export default {
             <div class="keep-menu">
                 <menu-header></menu-header>
             </div>
-            <span  @click="toggleHamburger">
-        <i class="hamburger fas fa-bars"></i>
-        </span>
+            <span  @click="toggleHamburger" class="toogleMenu">
+                <i class="hamburger fas fa-bars"></i>
+            </span>
         </header>
 
         <section class="mail-app-container flex">
@@ -116,14 +116,14 @@ export default {
     computed: {
         mailsToShow() {
             if (this.filterBy.kind === 'All') {
-                this.tempDB = this.tempDB = this.mailsDB.filter(mail => mail.subject.includes(this.filterBy.txt)|| 
-                mail.sentFrom.includes(this.filterBy.txt))
+                this.tempDB = this.tempDB = this.mailsDB.filter(mail => mail.subject.includes(this.filterBy.txt) ||
+                    mail.sentFrom.includes(this.filterBy.txt))
             } else if (this.filterBy.kind === 'Unread') {
-                this.tempDB = this.mailsDB.filter(mail => (!mail.isRead) && (mail.subject.includes(this.filterBy.txt)|| 
-                mail.sentFrom.includes(this.filterBy.txt)))
+                this.tempDB = this.mailsDB.filter(mail => (!mail.isRead) && (mail.subject.includes(this.filterBy.txt) ||
+                    mail.sentFrom.includes(this.filterBy.txt)))
             } else if (this.filterBy.kind === 'Read') {
-                this.tempDB = this.mailsDB.filter(mail => (mail.isRead) && (mail.subject.includes(this.filterBy.txt)|| 
-                mail.sentFrom.includes(this.filterBy.txt)))
+                this.tempDB = this.mailsDB.filter(mail => (mail.isRead) && (mail.subject.includes(this.filterBy.txt) ||
+                    mail.sentFrom.includes(this.filterBy.txt)))
             }
             if (this.folder === 'starred') {
                 return this.tempDB.filter(mail => (mail.isFav) && (!mail.isDeleted))
