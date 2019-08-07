@@ -2,6 +2,6 @@
 <p> data stored in local storage, this project has no backend </p>
 <pre>build with vue.js in 4 days whith Demitry Leshin
 check it out !!
-<a href="shorturl.at/wyRTX">shorturl.at/wyRTX</h1>
-Contact: Alon Dai: alondai1@gmail.com
+<a href="shorturl.at/wyRTX">shorturl.at/wyRTX/>
+<span>Contact: Alon Dai: alondai1@gmail.com</span>
 </pre>
